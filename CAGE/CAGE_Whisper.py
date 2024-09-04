@@ -2,10 +2,10 @@ from transformers import SpeechT5Processor, SpeechT5ForSpeechToText, WhisperProc
 import torch
 import librosa
 
-processor = WhisperProcessor.from_pretrained("/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/openAI_out2/checkpoint-1000")
-model = WhisperForConditionalGeneration.from_pretrained("/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/openAI_out2/checkpoint-1000")
+processor = WhisperProcessor.from_pretrained("/openAI_out2/checkpoint-1000")
+model = WhisperForConditionalGeneration.from_pretrained("/openAI_out2/checkpoint-1000")
 
-audio_file = "/root/public/dev8T/jtang/exp_925/train/distance/60/audio01_Raw_0.wav"
+audio_file = "/distance/60/audio01_Raw_0.wav"
 audio, sr = librosa.load(audio_file, sr=processor.feature_extractor.sampling_rate)
 
 inputs = processor(audio=audio, sampling_rate=sr, return_tensors="pt")
