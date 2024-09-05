@@ -3,8 +3,8 @@ from transformers import SpeechEncoderDecoderModel, AutoFeatureExtractor, AutoTo
 # checkpoints to leverage
 from model.CustomSeqModel import CustomSpeechEncoderDecoderModel
 
-encoder_id = "/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/hubert-base-ls960/"
-decoder_id = "/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/bart-large/"
+encoder_id = "./dataset_text_audio/pretrained_models/models/hubert-base-ls960/"
+decoder_id = "./dataset_text_audio/pretrained_models/models/bart-large/"
 
 # load and save speech-encoder-decoder model
 # set some hyper-parameters for training and evaluation
@@ -14,10 +14,10 @@ model = SpeechEncoderDecoderModel.from_encoder_decoder_pretrained(encoder_id, de
 model.config.decoder_start_token_id = model.decoder.config.bos_token_id
 model.config.eos_token_id = model.decoder.config.eos_token_id
 model.config.pad_token_id = model.decoder.config.pad_token_id
-model.save_pretrained("/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/mode_hu-bart-large/")
+model.save_pretrained("./dataset_text_audio/pretrained_models/models/mode_hu-bart-large/")
 
 # load and save processor
 feature_extractor = AutoFeatureExtractor.from_pretrained(encoder_id)
 tokenizer = AutoTokenizer.from_pretrained(decoder_id)
 processor = Wav2Vec2Processor(feature_extractor, tokenizer)
-processor.save_pretrained("/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/mode_hu-bart-large/")
+processor.save_pretrained("./dataset_text_audio/pretrained_models/models/mode_hu-bart-large/")

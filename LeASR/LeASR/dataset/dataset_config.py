@@ -1,15 +1,15 @@
 import os
 
-NO_BOS_PATH = "/root/public/jtang/ast_datasets/fmcw_audio_asr_no_bof/"
-FLAG_PATH = "/root/public/jtang/ast_datasets/fmcw_audio_asr_flag/"
-NOISED_B_PATH = "/root/public/jtang/ast_datasets/fmcw_audio_asr_noised/"
-noisy_audio_B_add_bos = "/root/public/dev8T/jtang/ASR/datasets/fmcw_audio_asr_noised_add_bos/"
-noisy_audio_B_add_bos_real = "/root/public/dev8T/jtang/ASR/datasets/fmcw_audio_asr_noised_add_bos_real/"
+NO_BOS_PATH = "./ast_datasets/fmcw_audio_asr_no_bof/"
+FLAG_PATH = "./ast_datasets/fmcw_audio_asr_flag/"
+NOISED_B_PATH = "./ast_datasets/fmcw_audio_asr_noised/"
+noisy_audio_B_add_bos = "./ASR/datasets/fmcw_audio_asr_noised_add_bos/"
+noisy_audio_B_add_bos_real = "./ASR/datasets/fmcw_audio_asr_noised_add_bos_real/"
 
 
 class ASRDataset: 
-    train_path = r"/root/public/dev8T/jtang/ASR/datasets/asr_test_228/asr_train.json"
-    val_path = r"/root/public/dev8T/jtang/ASR/datasets/asr_test_228/asr_test.json"
+    train_path = r"./ASR/datasets/asr_test_228/asr_train.json"
+    val_path = r"./ASR/datasets/asr_test_228/asr_test.json"
 
     def __init__(self, label_key, audio_key, audio_path):
         self.label_key = label_key
@@ -62,9 +62,9 @@ class EvalConfig:
         return self.dataset.get_audio(item)
 
 
-flag_eval = EvalConfig("/root/public/dev8T/jtang/ASR/datasets/asr_test_228/asr_eval.json", "flag_asr_text", flag_dataset)
-ablation_eval = EvalConfig("/root/public/dev8T/jtang/ASR/exp/exp_ablation.json", "asr_result_no_context", ablation_dataset)
-ablation_flag_eval = EvalConfig("/root/public/dev8T/jtang/ASR/exp/exp_ablation.json", "asr_result_with_context", flag_dataset)
-ablation_flag_real_eval = EvalConfig("/root/public/dev8T/jtang/ASR/exp/exp_ablation_result.json", "asr_result_with_context_real", real_with_context)
-ablation_no_flag_real_eval = EvalConfig("/root/public/dev8T/jtang/ASR/exp/exp_ablation_result.json", "asr_result_no_context_real", real_no_context)
-real_b_eval = EvalConfig("/root/public/dev8T/jtang/ASR/datasets/asr_test_223/asr_test.json", "model_B_asr_text", model_b_dataset)
+flag_eval = EvalConfig("./ASR/datasets/asr_test_228/asr_eval.json", "flag_asr_text", flag_dataset)
+ablation_eval = EvalConfig("./ASR/exp/exp_ablation.json", "asr_result_no_context", ablation_dataset)
+ablation_flag_eval = EvalConfig("./ASR/exp/exp_ablation.json", "asr_result_with_context", flag_dataset)
+ablation_flag_real_eval = EvalConfig("./ASR/exp/exp_ablation_result.json", "asr_result_with_context_real", real_with_context)
+ablation_no_flag_real_eval = EvalConfig("./ASR/exp/exp_ablation_result.json", "asr_result_no_context_real", real_no_context)
+real_b_eval = EvalConfig("./ASR/datasets/asr_test_223/asr_test.json", "model_B_asr_text", model_b_dataset)
