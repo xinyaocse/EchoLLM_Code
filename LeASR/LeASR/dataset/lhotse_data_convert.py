@@ -35,11 +35,11 @@ def normalize(waveform):
     return normalized_waveform
 
 
-cut_set = CutSet.from_jsonl("/root/public/dev8T/jtang/ASR/datasets/libriheavy-master/libriheavy_cuts_medium_filter_audio.jsonl.gz")
-PATH_8k = r"/root/public/dev8T/jtang/ASR/datasets/libriheavy_test/clean8k/"
-JSON_PTAH = r"/root/public/dev8T/jtang/ASR/datasets/libriheavy_test/5w_medium_8k_noised_data.json"
+cut_set = CutSet.from_jsonl("./ASR/datasets/libriheavy-master/libriheavy_cuts_medium_filter_audio.jsonl.gz")
+PATH_8k = r"./ASR/datasets/libriheavy_test/clean8k/"
+JSON_PTAH = r"./ASR/datasets/libriheavy_test/5w_medium_8k_noised_data.json"
 
-NOISE_PATH = r"/root/public/dev8T/jtang/fmcw/process/TARGET/NOISE_8K/NOISE/"
+NOISE_PATH = r"./fmcw/process/TARGET/NOISE_8K/NOISE/"
 noise_list = os.listdir(NOISE_PATH)
 data_length = 50000
 MAX_LENGTH = 926066

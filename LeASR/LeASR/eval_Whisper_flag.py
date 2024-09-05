@@ -53,7 +53,7 @@ def write_json_result2(json_path, text_list, val_key):
     write_result(json_path, files)
 
 training_args = Seq2SeqTrainingArguments(
-    output_dir="/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/openAI_out2",
+    output_dir="./dataset_text_audio/pretrained_models/models/openAI_out2",
     per_device_train_batch_size=32,
     gradient_accumulation_steps=2, 
     learning_rate=1e-5,
@@ -112,25 +112,25 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 
 
 def main():
-    cache_path = r"/root/public/dev8T/jtang/ASR/datasets/asr_test_228/dialog_cache_flag_real_eval"
+    cache_path = r"./ASR/datasets/asr_test_228/dialog_cache_flag_real_eval"
     if os.path.exists(cache_path):
         try:
             shutil.rmtree(cache_path)
-            print(f"文件夹 '{cache_path}' 已成功删除。")
+            print(f"Folder '{cache_path}' has been successfully deleted.")
         except Exception as e:
-            print(f"删除文件夹时发生错误：{e}")
+            print(f"An error occurred while deleting the folder: {e}")
     else:
-        print(f"文件夹 '{cache_path}' 不存在。")
+        print(f"Folder '{cache_path}' does not exist.")
 
     eval_dataset = EvalAdapter()
     eval_dataset.set_datasets(ablation_flag_eval)
     raw_datasets = load_data_by_path("/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog_eval.py",
-                                     "/root/public/dev8T/jtang/ASR/datasets/asr_test_228/dialog_cache_flag_eval",
+                                     "./ASR/datasets/asr_test_228/dialog_cache_flag_eval",
                                      False, True)
     # print(raw_datasets) ##['audio', 'text_upper', 'id']
 
     processor = WhisperProcessor.from_pretrained(
-        "/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/openAI_out2/checkpoint-1000"
+        "./dataset_text_audio/pretrained_models/models/openAI_out2/checkpoint-1000"
     )
 
     sampling_rate = processor.feature_extractor.sampling_rate
@@ -194,7 +194,7 @@ def main():
     #         )
     # print(last_checkpoint)
     model = WhisperForConditionalGeneration.from_pretrained(
-        "/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/openAI_out2/checkpoint-1000")
+        "./dataset_text_audio/pretrained_models/models/openAI_out2/checkpoint-1000")
 
     from functools import partial
 

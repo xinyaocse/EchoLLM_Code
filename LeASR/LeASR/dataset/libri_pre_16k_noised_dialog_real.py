@@ -9,9 +9,9 @@ import logging
 
 import torchaudio
 
-META_DATA_TRAIN_PATH = r'/root/public/dev8T/jtang/ASR/datasets/asr_test_228/fmcw_refine_filtered_train.json'
-META_DATA_TEST_PATH = r'/root/public/dev8T/jtang/ASR/datasets/asr_test_228/fmcw_refine_filtered_test.json'
-META_DATA_VAL_PATH = r'/root/public/dev8T/jtang/ASR/datasets/asr_test_228/fmcw_refine_filtered_test.json'
+META_DATA_TRAIN_PATH = r'./ASR/datasets/asr_test_228/fmcw_refine_filtered_train.json'
+META_DATA_TEST_PATH = r'./ASR/datasets/asr_test_228/fmcw_refine_filtered_test.json'
+META_DATA_VAL_PATH = r'./ASR/datasets/asr_test_228/fmcw_refine_filtered_test.json'
 
 
 

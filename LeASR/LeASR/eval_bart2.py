@@ -87,7 +87,7 @@ class ModelArguments:
 
     model_name_or_path: str = field(
         metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
-        , default='/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/mode_hu-bart/'
+        , default='./dataset_text_audio/pretrained_models/models/mode_hu-bart/'
     )
     config_name: Optional[str] = field(
         default=None, metadata={"help": "Pretrained config name or path if not the same as model_name"}
@@ -269,11 +269,11 @@ def main():
     parser = HfArgumentParser((ModelArguments, DataTrainingArguments, Seq2SeqTrainingArguments))
     # parser.add_argument("--dataset_name", type=str, default="librispeech_asr")
     # parser.add_argument("--model_name_or_path", type=str,
-    #                     default="/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/mode_hu-bart/")
+    #                     default="./dataset_text_audio/pretrained_models/models/mode_hu-bart/")
     # parser.add_argument("--dataset_config_name", type=str, default="clean")
     # parser.add_argument("--train_split_name", type=str, default="train.100")
     # parser.add_argument("--eval_split_name", type=str, default="validation")
-    # parser.add_argument("--output_dir", type=str, default="/root/public/dev8T/jtang/ASR/output_dir/")
+    # parser.add_argument("--output_dir", type=str, default="./ASR/output_dir/")
     # # parser.add_argument("--preprocessing_num_workers", type=int, default=16)
     # parser.add_argument("--length_column_name", type=str, default="input_length")
     # parser.add_argument("--overwrite_output_dir", type=bool, default=False)
@@ -415,7 +415,7 @@ def main():
         cache_dir=model_args.cache_dir
     )
 
-    if model.config.decoder_start_token_id is None:  # 注意这个
+    if model.config.decoder_start_token_id is None: 
         raise ValueError("Make sure that `config.decoder_start_token_id` is correctly defined")
 
     if model_args.freeze_feature_encoder:
@@ -522,8 +522,8 @@ def main():
 
         pred_str = tokenizer.batch_decode(pred_ids, skip_special_tokens=True)
         print(pred_str)
-        # write_json_result("/root/public/dev8T/jtang/dataset_text_audio/asr_eval_with_no_pre.json", pred_str, True)
-        write_json_result("/root/public/dev8T/jtang/ASR/datasets/asr_test_223/asr_test.json", pred_str, False)
+        # write_json_result("./dataset_text_audio/asr_eval_with_no_pre.json", pred_str, True)
+        write_json_result("./ASR/datasets/asr_test_223/asr_test.json", pred_str, False)
         # we do not want to group tokens when computing the metrics
         label_str = tokenizer.batch_decode(pred.label_ids, skip_special_tokens=True)
 

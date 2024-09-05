@@ -18,7 +18,7 @@ from transformers import Seq2SeqTrainer
 
 
 training_args = Seq2SeqTrainingArguments(
-    output_dir="/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/openAI_out2",
+    output_dir="./dataset_text_audio/pretrained_models/models/openAI_out2",
     per_device_train_batch_size=32,
     gradient_accumulation_steps=2, 
     learning_rate=1e-5,
@@ -75,20 +75,19 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 
 def main():
 
-    # 1、数据加载并向量化whisper
     # raw_datasets = load_data_by_path("/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog.py",
-    #                                  "/root/public/dev8T/jtang/ASR/datasets/asr_test_228/dialog_cache_noised_b",
+    #                                  "./ASR/datasets/asr_test_228/dialog_cache_noised_b",
     #                                  True, True)
     raw_datasets = load_data_by_path("/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog_real.py",
-                                     "/root/public/dev8T/jtang/ASR/datasets/asr_test_228/dialog_cache_real",
+                                     "./ASR/datasets/asr_test_228/dialog_cache_real",
                                      True, True)
     # raw_datasets = load_data_by_path("/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog_real.py",
-    #                                  "/root/public/dev8T/jtang/ASR/datasets/asr_test_228/dialog_cache_real",
+    #                                  "./ASR/datasets/asr_test_228/dialog_cache_real",
     #                                  True, True)
     # print(raw_datasets) ##['audio', 'text_upper', 'id']
 
     processor = WhisperProcessor.from_pretrained(
-        "/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/openAI_out1/checkpoint-800"
+        "./dataset_text_audio/pretrained_models/models/openAI_out1/checkpoint-800"
     )
 
     sampling_rate = processor.feature_extractor.sampling_rate
@@ -148,7 +147,7 @@ def main():
     #             "the `--output_dir` or add `--overwrite_output_dir` to train from scratch."
     #         )
     # print(last_checkpoint)
-    model = WhisperForConditionalGeneration.from_pretrained("/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/openAI_out1/checkpoint-800")
+    model = WhisperForConditionalGeneration.from_pretrained("./dataset_text_audio/pretrained_models/models/openAI_out1/checkpoint-800")
 
 
     from functools import partial

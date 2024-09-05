@@ -17,7 +17,7 @@ normalizer = BasicTextNormalizer()
 from transformers import Seq2SeqTrainer
 
 training_args = Seq2SeqTrainingArguments(
-    output_dir="/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/T5_out4", 
+    output_dir="./dataset_text_audio/pretrained_models/models/T5_out4", 
     per_device_train_batch_size=4,
     gradient_accumulation_steps=8, 
     learning_rate=1e-5,
@@ -72,18 +72,18 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 def main():
     # 1、数据加载并向量化whisper
     raw_datasets = load_data_by_path("/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog.py",
-                                     "/root/public/dev8T/jtang/ASR/datasets/asr_test_228/dialog_cache_noised_b",
+                                     "./ASR/datasets/asr_test_228/dialog_cache_noised_b",
                                      True, True)
     # raw_datasets = load_data_by_path("/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog_real.py",
-    #                                  "/root/public/dev8T/jtang/ASR/datasets/asr_test_228/dialog_cache_real",
+    #                                  "./ASR/datasets/asr_test_228/dialog_cache_real",
     #                                  True, True)
     # raw_datasets = load_data_by_path("/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog_real.py",
-    #                                  "/root/public/dev8T/jtang/ASR/datasets/asr_test_228/dialog_cache_real",
+    #                                  "./ASR/datasets/asr_test_228/dialog_cache_real",
     #                                  True, True)
     # print(raw_datasets) ##['audio', 'text_upper', 'id']
 
     processor = SpeechT5Processor.from_pretrained(
-        "/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/T5_out3/checkpoint-2700"
+        "./dataset_text_audio/pretrained_models/models/T5_out3/checkpoint-2700"
     )
 
     sampling_rate = processor.feature_extractor.sampling_rate
@@ -157,7 +157,7 @@ def main():
     #         )
     # print(last_checkpoint)
     model = SpeechT5ForSpeechToText.from_pretrained(
-        "/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/T5_out3/checkpoint-2700")
+        "./dataset_text_audio/pretrained_models/models/T5_out3/checkpoint-2700")
 
     from functools import partial
 

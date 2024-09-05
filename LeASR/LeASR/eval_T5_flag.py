@@ -47,7 +47,7 @@ def write_json_result2(json_path, text_list, val_key):
     write_result(json_path, files)
 
 training_args = Seq2SeqTrainingArguments(
-    output_dir="/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/T5_out4",
+    output_dir="./dataset_text_audio/pretrained_models/models/T5_out4",
     per_device_train_batch_size=4,
     gradient_accumulation_steps=8, 
     learning_rate=1e-5,
@@ -97,7 +97,7 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 
 
 def main():
-    cache_path = r"/root/public/dev8T/jtang/ASR/datasets/asr_test_228/dialog_cache_flag_real_eval"
+    cache_path = r"./ASR/datasets/asr_test_228/dialog_cache_flag_real_eval"
     if os.path.exists(cache_path):
         try:
             shutil.rmtree(cache_path)
@@ -115,7 +115,7 @@ def main():
     # print(raw_datasets) ##['audio', 'text_upper', 'id']
 
     processor = SpeechT5Processor.from_pretrained(
-        "/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/T5_out3/checkpoint-2700"
+        "./dataset_text_audio/pretrained_models/models/T5_out3/checkpoint-2700"
     )
 
     sampling_rate = processor.feature_extractor.sampling_rate
@@ -181,7 +181,7 @@ def main():
     #         )
     # print(last_checkpoint)
     model = SpeechT5ForSpeechToText.from_pretrained(
-        "/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/T5_out3/checkpoint-2700")
+        "./dataset_text_audio/pretrained_models/models/T5_out3/checkpoint-2700")
 
     from functools import partial
 

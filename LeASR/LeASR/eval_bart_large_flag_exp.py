@@ -92,7 +92,7 @@ class ModelArguments:
 
     model_name_or_path: str = field(
         metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
-        , default='/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/mode_hu-bart/'
+        , default='./dataset_text_audio/pretrained_models/models/mode_hu-bart/'
     )
     config_name: Optional[str] = field(
         default=None, metadata={"help": "Pretrained config name or path if not the same as model_name"}
@@ -274,11 +274,11 @@ def main():
     parser = HfArgumentParser((ModelArguments, DataTrainingArguments, Seq2SeqTrainingArguments))
     # parser.add_argument("--dataset_name", type=str, default="librispeech_asr")
     # parser.add_argument("--model_name_or_path", type=str,
-    #                     default="/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/mode_hu-bart/")
+    #                     default="./dataset_text_audio/pretrained_models/models/mode_hu-bart/")
     # parser.add_argument("--dataset_config_name", type=str, default="clean")
     # parser.add_argument("--train_split_name", type=str, default="train.100")
     # parser.add_argument("--eval_split_name", type=str, default="validation")
-    # parser.add_argument("--output_dir", type=str, default="/root/public/dev8T/jtang/ASR/output_dir/")
+    # parser.add_argument("--output_dir", type=str, default="./ASR/output_dir/")
     # # parser.add_argument("--preprocessing_num_workers", type=int, default=16)
     # parser.add_argument("--length_column_name", type=str, default="input_length")
     # parser.add_argument("--overwrite_output_dir", type=bool, default=False)
@@ -484,7 +484,7 @@ def main():
         batch["labels"] = tokenizer(input_str).input_ids
         # batch["decoder_input_ids"] = tokenizer(pre_str, add_special_tokens=False).input_ids
         return batch
-    cache_path = r"/root/public/dev8T/jtang/ASR/datasets/asr_test_228/dialog_cache_flag_real_eval"
+    cache_path = r"./ASR/datasets/asr_test_228/dialog_cache_flag_real_eval"
     if os.path.exists(cache_path):
         try:
             shutil.rmtree(cache_path)

@@ -371,7 +371,7 @@ def main():
         model.freeze_encoder()
         model.model.encoder.gradient_checkpointing = False
 
-    if data_args.language is not None:  # 学习一下tokenizer
+    if data_args.language is not None: 
         # We only need to set the task id when the language is specified (i.e. in a multilingual setting)
         tokenizer.set_prefix_tokens(language=data_args.language, task=data_args.task)
 
@@ -423,7 +423,7 @@ def main():
         # batch["decoder_input_ids"] = tokenizer(pre_str, add_special_tokens=False).input_ids
         return batch
     raw_datasets = load_data_by_path("/root/code_project/audio/asr_pre_dataset/libri_pre_16k_noised_dialog.py",
-                                     "/root/public/dev8T/jtang/ASR/datasets/asr_test_223/dialog_cache",
+                                     "./ASR/datasets/asr_test_223/dialog_cache",
                                      True, True)
     with training_args.main_process_first(desc="dataset map pre-processing"):
         vectorized_datasets = raw_datasets.map(

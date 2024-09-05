@@ -111,13 +111,13 @@ def load_data(is_train=True, is_val=False):
     raw_datasets = DatasetDict()
     if is_train:
         data_train = load_dataset(path="/root/code_project/audio/LLM_datasets/libri_pre_16k_noised.py",
-                                  cache_dir="/root/public/dev8T/jtang/ASR/datasets/libri_pre_asr_test/cache/",
+                                  cache_dir="./ASR/datasets/libri_pre_asr_test/cache/",
                                   split=Split.TRAIN)
         raw_datasets["train"] = data_train
 
     if is_val:
         data_val = load_dataset(path="/root/code_project/audio/LLM_datasets/libri_pre_16k_noised.py",
-                                cache_dir="/root/public/dev8T/jtang/ASR/datasets/libri_pre_asr_test/cache/",
+                                cache_dir="./ASR/datasets/libri_pre_asr_test/cache/",
                                 split=Split.VALIDATION)
         raw_datasets["eval"] = data_val
     # dataset_sampling_rate = next(iter(raw_datasets.values())).features[data_args.audio_column_name].sampling_rate
@@ -163,13 +163,13 @@ def get_eval_datasets(is_train=True, is_val=False, is_add_pre=False):
         path = "/root/code_project/audio/LLM_datasets/libri_pre_16k_noised_one_sentence_no_pre.py"
     if is_train:
         data_train = load_dataset(path=path,
-                                  cache_dir="/root/public/dev8T/jtang/ASR/datasets/libri_pre_asr_test_eval/cache/",
+                                  cache_dir="./ASR/datasets/libri_pre_asr_test_eval/cache/",
                                   split=Split.TRAIN)
         raw_datasets["train"] = data_train
 
     if is_val:
         data_val = load_dataset(path=path,
-                                cache_dir="/root/public/dev8T/jtang/ASR/datasets/libri_pre_asr_test_eval/cache/",
+                                cache_dir="./ASR/datasets/libri_pre_asr_test_eval/cache/",
                                 split=Split.VALIDATION)
         raw_datasets["eval"] = data_val
     # dataset_sampling_rate = next(iter(raw_datasets.values())).features[data_args.audio_column_name].sampling_rate
@@ -191,13 +191,13 @@ def get_eval_datasets_bart2(is_train=True, is_val=False, is_add_pre=False):
         path = "/root/code_project/audio/asr_pre_dataset/libri_pre_16k_noised_dialog_eval_with_no_pre_real.py"
     if is_train:
         data_train = load_dataset(path=path,
-                                  cache_dir="/root/public/dev8T/jtang/ASR/datasets/libri_pre_asr_test_eval/cache4/",
+                                  cache_dir="./ASR/datasets/libri_pre_asr_test_eval/cache4/",
                                   split=Split.TRAIN)
         raw_datasets["train"] = data_train
 
     if is_val:
         data_val = load_dataset(path=path,
-                                cache_dir="/root/public/dev8T/jtang/ASR/datasets/libri_pre_asr_test_eval/cache4/",
+                                cache_dir="./ASR/datasets/libri_pre_asr_test_eval/cache4/",
                                 split=Split.VALIDATION)
         raw_datasets["eval"] = data_val
     # dataset_sampling_rate = next(iter(raw_datasets.values())).features[data_args.audio_column_name].sampling_rate
@@ -235,13 +235,13 @@ def get_ve_dataset(feature_extractor, tokenizer, is_train=True, is_val=False):
     raw_datasets = DatasetDict()
     if is_train:
         data_train = load_dataset(path="/root/code_project/audio/LLM_datasets/libri_pre_16k_noised.py",
-                                  cache_dir="/root/public/dev8T/jtang/ASR/datasets/libri_pre_asr_test/cache/",
+                                  cache_dir="./ASR/datasets/libri_pre_asr_test/cache/",
                                   split=Split.TRAIN)
         raw_datasets["train"] = data_train
 
     if is_val:
         data_val = load_dataset(path="/root/code_project/audio/LLM_datasets/libri_pre_16k_noised.py",
-                                cache_dir="/root/public/dev8T/jtang/ASR/datasets/libri_pre_asr_test/cache/",
+                                cache_dir="./ASR/datasets/libri_pre_asr_test/cache/",
                                 split=Split.VALIDATION)
         raw_datasets["eval"] = data_val
     # dataset_sampling_rate = next(iter(raw_datasets.values())).features[data_args.audio_column_name].sampling_rate
@@ -270,6 +270,6 @@ if __name__ == '__main__':
     # )
     # print(raw_data['train'][0])
     raw_datasets = load_data_by_path("/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog_eval_exp_data.py",
-                                     "/root/public/dev8T/jtang/ASR/datasets/asr_test_223/dialog_cache",
+                                     "./ASR/datasets/asr_test_223/dialog_cache",
                                      False, True)
     print(raw_datasets['train'][2])
