@@ -70,7 +70,6 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 
 
 def main():
-    # 1、数据加载并向量化whisper
     raw_datasets = load_data_by_path("/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog.py",
                                      "./ASR/datasets/asr_test_228/dialog_cache_noised_b",
                                      True, True)
