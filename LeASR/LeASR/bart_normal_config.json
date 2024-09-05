@@ -1,9 +1,9 @@
 --dataset_name="librispeech_asr"
---model_name_or_path="/root/public/dev8T/jtang/dataset_text_audio/pretrained_models/models/mode_hu-bart2/"
+--model_name_or_path="./dataset_text_audio/pretrained_models/models/mode_hu-bart2/"
 --dataset_config_name="clean"
 --train_split_name="train.100"
 --eval_split_name="validation"
---output_dir="/root/public/dev8T/jtang/ASR/large_bart_flag_real/"
+--output_dir="./ASR/large_bart_flag_real/"
 --preprocessing_num_workers="16"
 --length_column_name="input_length"
 --overwrite_output_dir=true

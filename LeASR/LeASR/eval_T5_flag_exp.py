@@ -107,7 +107,6 @@ def main():
     else:
         print(f"Folder '{cache_path}' does not exist.")
 
-    # 1、数据加载并向量化whisper
     raw_datasets = load_data_by_path(
         # "/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog_eval_old_data.py",
         "/root/code_project/speech_asr/dataset/libri_pre_16k_noised_dialog_eval_exp_data.py",
