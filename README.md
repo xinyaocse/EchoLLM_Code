@@ -32,10 +32,10 @@ The measurement folder contains five files. Among them, *a​​dc_dataCaptureTe
 - *muti_loc_exp_test_mti_beamform.mlx*: Implements signal-to-noise (SNR)-based optimal range bin selection.
 - *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm to suppress noise and enhance signal clarity.
 - *final_data_process_923.mlx*: provides a complete processing pipeline, including:
-- - Identifying the target range bin
-- - Extracting phase variation signals
-- - Eliminating background noise and head motion artifacts
-- - Exporting the processed signal as a .wav files
+    - Identifying the target range bin
+    - Extracting phase variation signals
+    - Eliminating background noise and head motion artifacts
+    - Exporting the processed signal as a .wav files
 
 Note: When dealing with unknown-length audio recordings (i.e., outside of the training or testing phases), it is recommended to configure a high radar frame rate in the profile and apply the CNN-based method introduced in the paper to detect the actual voice segments.
 
@@ -122,8 +122,8 @@ If you simply want to try out LeASR, a lightweight automatic speech recognition 
 
 - For more information on how the dataset is loaded, refer to the beginning of the *libri_pre_16k_noised_dialog_.py* file and the *exp_config.py* file in the *dataset* folder.
   
-- - The former defines the data loading process used for training, evaluation, and testing across the full language dataset.
-- - The latter provides configuration settings for ablation experiments.
+    - The former defines the data loading process used for training, evaluation, and testing across the full language dataset.
+    - The latter provides configuration settings for ablation experiments.
     
 ```python
 # Dataset path settings in libri_pre_16k_noised_dialog_JP.py
