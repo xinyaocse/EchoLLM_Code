@@ -52,9 +52,8 @@ The *CNN_wav.py* script trains a convolutional neural network (CNN) to detect th
 The *Time_split.py* script takes a .wav file as input and segments it using a 50 ms window size with a 10 ms sliding step. It outputs the estimated start and end times of detected speech segments.
 
 ---
-
 ## How to use the LeASR
----
+
 ### demo
 If you just want to experience the use of LeASR, a simple ASR demo is provided in the **demo** file. You only need to prepare the audio and the fine-tuned model to complete the recognition process. And to simplify the steps, the contextual audio can be directly spliced for input.
 
