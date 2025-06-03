@@ -23,7 +23,7 @@ You can ​​customize the Lua script​​ to modify radar configuration param
 
 ### Verification
 
-The *Verification_script* folder provides a method to verify the successful configuration and operational status of the radar. Specifically, the bone conduction headphones emits a linearly frequency-modulated signal, which is sampled and recorded by the mmWave radar using the Lua scripts in this folder.
+The *Verification_script* folder provides a method to verify the successful configuration and operational status of the radar. Specifically, the bone conduction headphones emit a linearly frequency-modulated signal, which is sampled and recorded by the mmWave radar using the Lua scripts in this folder.
 
 ### Measurement
 
