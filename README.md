@@ -22,15 +22,27 @@ You can ​​customize the Lua script​​s to modify radar configuration para
 
 ### Verification
 
-In the Verification_script folder, we provide a way to verify the successful configuration and usability of the radar. Specifically, the BCH generates a linearly frequency-modulated sound, and the mmWave samples and saves using the lua files in this folder.
+The Verification_script folder provides a method to verify the successful configuration and operational status of the radar. Specifically, the bone conduction headphones emits a linearly frequency-modulated signal, which is sampled and recorded by the mmWave radar using the Lua scripts in this folder.
 
 ### Measurement
 
-In the measurement folder, there are three files: adc_dataCapture_model_test.mlx is used to sample the vibration signal of BCH. dataCaptureTest_audio.lua: Modify the configuration and set the sampling duration. finnal_data_process_923.mlx converts bin data into wav data. 
+The measurement folder contains three main files:
+- *adc_dataCapture_model_test.mlx*: Used to sample the vibration signal from the bone conduction headphones.
+- *dataCaptureTest_audio.lua*: Allows modification of radar configuration parameters and sampling duration.
+- *final_data_process_923.mlx*: Converts raw .bin data into .wav audio files.
+
+Additional scripts include:
+- *adc_dataCapture_model.mlx*: Control mmWave data acquisition synchronously while the bone conduction headphone plays audio in batches.
+- *muti_loc_exp_test_mti_beamform.mlx*: Implements an SNR-based decision mechanism.
+- *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm for denoision.
+- *final_data_process_923.mlx*, we provide a streamlined method to determine the range bin of the mmWave file, extract the corresponding phase change data, remove background noise, and remove head movements. Finally, save the result to a WAV file.
+
+In the measurement folder, there are three files: adc_dataCapture_model_test.mlx is used to sample the vibration signal of BCH. dataCaptureTest_audio.lua: Modify the configuration and set the sampling duration. final_data_process_923.mlx converts bin data into wav data. 
 - In the *adc_dataCapture_model.mlx*, the audio is played back in BCH in batches and the mmWave acquisition is controlled synchronously.
 - In the *muti_loc_exp_test_mti_beamform* script we provide code for SNR-based judgment.
 - In the *fmcw_process_to_audio_local_circle* script we provide code for circle-fitting denoising.
-- In the code *finnal_data_process_923*, we provide a streamlined method to determine the range bin of the mmWave file, extract the corresponding phase change data, remove background noise, and remove head movements. Finally, save the result to a WAV file.
+  
+- In the code *final_data_process_923*, we provide a streamlined method to determine the range bin of the mmWave file, extract the corresponding phase change data, remove background noise, and remove head movements. Finally, save the result to a WAV file.
 
 If it is used for unknown audio length (non-training and testing phases), the radar frame rate of the profile is set to a large and the CNN method in the paper is used to identify the voice time period.
 
