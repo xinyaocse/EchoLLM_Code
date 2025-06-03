@@ -30,51 +30,51 @@ class ExpConfig:
         return []
 
 
-exp_config = ExpConfig({"distance": ['40', '60', '80', '90'], "volume": ['50', '60', '70', '80', '90', '100']},
+exp_config = ExpConfig({"Distance": ['40', '60', '80', '90'], "Volume": ['50', '60', '70', '80', '90', '100']},
                        "", "")
-exp_v2_config = ExpConfig({"volume_d30": ['50', '60', '70', '80', '90', '100']},
-                          "/root/public/dev8T/username/ASR/exp/exp_result_d30_volume.json",
+exp_v2_config = ExpConfig({"Volume_d30": ['50', '60', '70', '80', '90', '100']},
+                          "/root/public/dev8T/username/ASR/exp/exp_result_d30_Volume.json",
                           "/root/public/dev8T/username/ASR/exp/exp_v2_pre_dataset/")
-exp_v2_config.set_path_dict({"volume_d30": r"/root/public/dev8T/username/ASR/exp/exp_v2/volume_d30/"})
+exp_v2_config.set_path_dict({"Volume_d30": r"/root/public/dev8T/username/ASR/exp/exp_v2/Volume_d30/"})
 
-exp_v3_config = ExpConfig({"volume": ['50', '60', '70', '80', '90', '100'], "distance": ['40', '60', '80', '90']},
+exp_v3_config = ExpConfig({"Volume": ['50', '60', '70', '80', '90', '100'], "Distance": ['40', '60', '80', '90']},
                           "/root/public/dev8T/username/ASR/exp/exp_v3_result.json",
                           "/root/public/dev8T/username/ASR/exp/exp_v3_pre_dataset/")
-exp_v3_config.set_path_dict({"volume": r"/root/public/dev8T/username/ASR/exp/exp_v3/volume/",
-                             "distance": r"/root/public/dev8T/username/ASR/exp/exp_v3/distance/"})
+exp_v3_config.set_path_dict({"Volume": r"/root/public/dev8T/username/ASR/exp/exp_v3/Volume/",
+                             "Distance": r"/root/public/dev8T/username/ASR/exp/exp_v3/Distance/"})
 
-exp_v4_config = ExpConfig({"distance_v80": ['40', '60', '80', '100']},
-                          "/root/public/dev8T/username/ASR/exp/exp_result_v80_distance.json",
+exp_v4_config = ExpConfig({"Distance_v80": ['40', '60', '80', '100']},
+                          "/root/public/dev8T/username/ASR/exp/exp_result_v80_Distance.json",
                           "/root/public/dev8T/username/ASR/exp/exp_v4_pre_dataset/")
-exp_v4_config.set_path_dict({"distance_v80": r"/root/public/dev8T/username/ASR/exp/exp_v4/distance_v80/"})
+exp_v4_config.set_path_dict({"Distance_v80": r"/root/public/dev8T/username/ASR/exp/exp_v4/Distance_v80/"})
 
-exp_v5_config = ExpConfig({"volume": ['40', '50', '60', '70', '80', '90', '100'], "Angle": ['30', '45', '60', '75'],
-                           "headphone": ["type2"]},
+exp_v5_config = ExpConfig({"Volume": ['40', '50', '60', '70', '80', '90', '100'], "Angle": ['30', '45', '60', '75'],
+                           "Headphone": ["type2"]},
                           "/root/public/dev8T/username/ASR/exp/exp_v5_result.json",
                           "/root/public/dev8T/username/ASR/exp/exp_v5_pre_dataset/")
-exp_v5_config.set_path_dict({"volume": r"/root/public/dev8T/username/ASR/exp/exp_v5/volume/",
+exp_v5_config.set_path_dict({"Volume": r"/root/public/dev8T/username/ASR/exp/exp_v5/Volume/",
                              "Angle": r"/root/public/dev8T/username/ASR/exp/exp_v5/Angle/",
-                             "headphone": "/root/public/dev8T/username/ASR/exp/exp_v5/headphone/"})
+                             "Headphone": "/root/public/dev8T/username/ASR/exp/exp_v5/Headphone/"})
 
-exp_v6_config = ExpConfig({"volume": ['50', '60', '70', '80', '90', '100'], "Angle": ["15", '30', '45', '60', '75'],
-                           "headphone": ["type2"], "distance_v80": ['40', '60', '80', '100'],
+exp_v6_config = ExpConfig({"Volume": ['50', '60', '70', '80', '90', '100'], "Angle": ["15", '30', '45', '60', '75'],
+                           "Headphone": ["type2"], "Distance_v80": ['40', '60', '80', '100'],
                            "Motion": ['static', "FB", "LR", "UD"]},
                           "/root/public/dev8T/username/ASR/exp/exp_v6_result.json",
                           "/root/public/dev8T/username/ASR/exp/exp_v6_pre_dataset/")
-exp_v6_config.set_path_dict({"volume": r"/root/public/dev8T/username/ASR/exp/exp_v6/volume/",
+exp_v6_config.set_path_dict({"Volume": r"/root/public/dev8T/username/ASR/exp/exp_v6/Volume/",
                              "Angle": r"/root/public/dev8T/username/ASR/exp/exp_v6/Angle/",
-                             "headphone": "/root/public/dev8T/username/ASR/exp/exp_v6/headphone/",
-                             "distance_v80": r"/root/public/dev8T/username/ASR/exp/exp_v4/distance_v80/",
+                             "Headphone": "/root/public/dev8T/username/ASR/exp/exp_v6/Headphone/",
+                             "Distance_v80": r"/root/public/dev8T/username/ASR/exp/exp_v6/Distance_v80/",
                              "Motion": r"/root/public/dev8T/username/ASR/exp/exp_v6/Motion/"})
 
 exp_v8_config = ExpConfig({"Angle": ['30', '45'],
-                           "headphone": ["type2", "type3"], "distance": ['100', "120"]},
+                           "Headphone": ["type2", "type3"], "Distance": ['100', "120"]},
                           "/root/public/dev8T/username/ASR/exp/exp_v8_result.json",
                           "/root/public/dev8T/username/ASR/exp/exp_v8_pre_dataset/")
 exp_v8_config.set_path_dict({
     "Angle": r"/root/public/dev8T/username/ASR/exp/exp_v8/Angle/",
-    "headphone": "/root/public/dev8T/username/ASR/exp/exp_v8/headphone/",
-    "distance": r"/root/public/dev8T/username/ASR/exp/exp_v8/distance/"})
+    "Headphone": "/root/public/dev8T/username/ASR/exp/exp_v8/Headphone/",
+    "Distance": r"/root/public/dev8T/username/ASR/exp/exp_v8/Distance/"})
 
 exp_v9_config = ExpConfig({
     "Motion": ['STATIC', "FB", "LR", "UD"]},
@@ -83,60 +83,60 @@ exp_v9_config = ExpConfig({
 exp_v9_config.set_path_dict({"Motion": r"/root/public/dev8T/username/ASR/exp/exp_v8/Motion/"})
 
 exp_v10_config = ExpConfig({
-    "headphone": ["type2", "type3"], "distance": ['120', "140"]},
+    "Headphone": ["type2", "type3"], "Distance": ['120', "140"]},
     "/root/public/dev8T/username/ASR/exp/exp_v10_result.json",
     "/root/public/dev8T/username/ASR/exp/exp_v10_pre_dataset/")
 exp_v10_config.set_path_dict({
-    "headphone": "/root/public/dev8T/username/ASR/exp/exp_v10/headphone/",
-    "distance": r"/root/public/dev8T/username/ASR/exp/exp_v10/distance/"})
+    "Headphone": "/root/public/dev8T/username/ASR/exp/exp_v10/Headphone/",
+    "Distance": r"/root/public/dev8T/username/ASR/exp/exp_v10/Distance/"})
 
 exp_v11_config = ExpConfig({
-    "Motion": ['static'], "volume": ['80'], },
+    "Motion": ['static'], "Volume": ['80'], },
     "/root/public/dev8T/username/ASR/exp/exp_v11_result.json",
     "/root/public/dev8T/username/ASR/exp/exp_v11_pre_dataset/")
 exp_v11_config.set_path_dict({
     "Motion": "/root/public/dev8T/username/ASR/exp/exp_v11/Motion/",
-    "volume": "/root/public/dev8T/username/ASR/exp/exp_v11/volume/"})
+    "Volume": "/root/public/dev8T/username/ASR/exp/exp_v11/Volume/"})
 
 exp_v12_config = ExpConfig({
-    "Motion": ['static'], "volume": ['80'], },
+    "Motion": ['static'], "Volume": ['80'], },
     "/root/public/dev8T/username/ASR/exp/exp_v12_result.json",
     "/root/public/dev8T/username/ASR/exp/exp_v12_pre_dataset/")
 exp_v12_config.set_path_dict({
     "Motion": "/root/public/dev8T/username/ASR/exp/exp_v12/Motion/",
-    "volume": "/root/public/dev8T/username/ASR/exp/exp_v12/volume/"})
+    "Volume": "/root/public/dev8T/username/ASR/exp/exp_v12/Volume/"})
 
 exp_v13_config = ExpConfig({
-    "Motion": ['static'], "volume": ['80'], },
+    "Motion": ['static'], "Volume": ['80'], },
     "/root/public/dev8T/username/ASR/exp/exp_v13_result.json",
     "/root/public/dev8T/username/ASR/exp/exp_v13_pre_dataset/")
 exp_v13_config.set_path_dict({
     "Motion": "/root/public/dev8T/username/ASR/exp/exp_v13/Motion/",
-    "volume": "/root/public/dev8T/username/ASR/exp/exp_v13/volume/"})
+    "Volume": "/root/public/dev8T/username/ASR/exp/exp_v13/Volume/"})
 
 exp_v14_config = ExpConfig({
-    "digit": ['digit']},
+    "Digit": ['digit']},
     "/root/public/dev8T/username/ASR/exp/exp_v14_result.json",
     "/root/public/dev8T/username/ASR/exp/exp_v14_pre_dataset/",
     "/root/public/dev8T/username/ASR/exp/digit_exp/raw_audio.json")
 exp_v14_config.set_path_dict({
-    "digit": "/root/public/dev8T/username/ASR/exp/exp_v14/digit/"})
+    "Digit": "/root/public/dev8T/username/ASR/exp/exp_v14/digit/"})
 
 exp_v15_config = ExpConfig({
-    "digit": ['digit']},
+    "Digit": ['digit']},
     "/root/public/dev8T/username/ASR/exp/exp_v15_result.json",
     "/root/public/dev8T/username/ASR/exp/exp_v15_pre_dataset/",
     "/root/public/dev8T/username/ASR/exp/digit_exp/digit_eval.json")
 exp_v15_config.set_path_dict({
-    "digit": "/root/public/dev8T/username/ASR/exp/exp_v14/digit/"})
+    "Digit": "/root/public/dev8T/username/ASR/exp/exp_v14/digit/"})
 
 exp_v16_config = ExpConfig({
-    "digit": ['digit']},
+    "Digit": ['digit']},
     "/root/public/dev8T/username/ASR/exp/exp_v16_result.json",
     "/root/public/dev8T/username/ASR/exp/exp_v16_pre_dataset/",
     "/root/public/dev8T/username/ASR/exp/digit_exp/digit_eval.json")
 exp_v16_config.set_path_dict({
-    "digit": "/root/public/dev8T/username/ASR/exp/exp_v17/digit/"})
+    "Digit": "/root/public/dev8T/username/ASR/exp/exp_v17/digit/"})
 
 exp_v17_config = ExpConfig({
     "Human": ['Slow_F_Y', 'Moderate_F_Y', 'Fast_F_Y', 'Slow_M_Y', 'Moderate_M_Y', 'Fast_M_Y']},
@@ -178,10 +178,10 @@ exp_v21_config = ExpConfig({
 exp_v21_config.set_path_dict({
     "Human": "/root/public/dev8T/username/ASR/exp/exp_v21/Noise/"})
 
-exp_phone_config = ExpConfig({"distance": ['50', '100', '150', '200']},
-                             "/root/public/dev8T/username/ASR/exp/exp_phone_distance.json",
+exp_phone_config = ExpConfig({"Distance": ['50', '100', '150', '200']},
+                             "/root/public/dev8T/username/ASR/exp/exp_phone_Distance.json",
                              "/root/public/dev8T/username/ASR/exp/exp_phone_pre_dataset/")
-exp_phone_config.set_path_dict({"distance": r"/root/public/dev8T/username/ASR/exp/exp_phone/distance/"})
+exp_phone_config.set_path_dict({"Distance": r"/root/public/dev8T/username/ASR/exp/exp_phone/Distance/"})
 
 
 class ConfigAdapter:
