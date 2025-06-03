@@ -80,7 +80,7 @@ In this script, a .wav file is entered, split by a 50ms size and 10ms sliding wi
 --dataset_config_name="clean"
 --train_split_name="train.100"
 --eval_split_name="validation"
---output_dir="//root/public/....(your path)"
+--output_dir="/root/public/....(your path)"
 --preprocessing_num_workers="16"
 --length_column_name="input_length"
 --overwrite_output_dir=true
