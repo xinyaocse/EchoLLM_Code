@@ -26,19 +26,18 @@ The Verification_script folder provides a method to verify the successful config
 
 ### Measurement
 
-In the measurement folder, there are five files. Among them, *a​​dc_dataCaptureTest_audio.lua​​* is the configuration file for radar parameters. The remaining four code files are used for:
+The measurement folder contains five files. Among them, *a​​dc_dataCaptureTest_audio.lua​​* serves as the radar configuration file. The remaining four scripts are used for the following purposes:
 
-- *adc_dataCapture_model.mlx*: Synchronizes mmWave data acquisition with batch audio playback through bone conduction headphones.
-- *muti_loc_exp_test_mti_beamform.mlx*: Implements SNR-based optimal range bin selection.
-- *fmcw_process_to_audio_local_circle.mlx*: Performs denoising using circle-fitting algorithms.
-- *final_data_process_923.mlx*: Streamlines mmWave data processing by:
-- - Identifying target range bins
-- - Extracting phase variation data
+- *adc_dataCapture_model.mlx*: Synchronizes mmWave data acquisition with batch audio playback via bone conduction headphones.
+- *muti_loc_exp_test_mti_beamform.mlx*: Implements signal-to-noise (SNR)-based optimal range bin selection.
+- *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm to suppress noise and enhance signal clarity.
+- *final_data_process_923.mlx*: provides a complete processing pipeline, including:
+- - Identifying the target range bin
+- - Extracting phase variation signals
 - - Eliminating background noise and head motion artifacts
-- - Exporting results as WAV files
+- - Exporting the processed signal as a .wav files
 
-
-If it is used for unknown audio length (non-training and testing phases), the radar frame rate of the profile is set to a large and the CNN method in the paper is used to identify the voice time period.
+Note: When dealing with unknown-length audio recordings (i.e., outside of the training or testing phases), it is recommended to configure a high radar frame rate in the profile and apply the CNN-based method introduced in the paper to detect the actual voice segments.
 
 ---
 
@@ -46,10 +45,11 @@ If it is used for unknown audio length (non-training and testing phases), the ra
 
 ### CNN_wav.py
 
-In this script, we artificially label 10,000 spectral images and train them to determine whether there is a voice.
+The *CNN_wav.py* script trains a convolutional neural network (CNN) to detect the presence of voice in audio signals. Specifically, 10,000 spectrogram images are manually labeled and used as the training dataset to enable voice activity classification.
+
 ### Time_split.py
 
-In this script, a .wav file is entered, split by a 50ms size and 10ms sliding window, and the start and end times of the sound are output.
+The *Time_split.py* script takes a .wav file as input and segments it using a 50 ms window size with a 10 ms sliding step. It outputs the estimated start and end times of detected speech segments.
 
 ---
 
