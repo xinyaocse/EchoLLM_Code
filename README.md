@@ -47,15 +47,16 @@ Note: When dealing with unknown-length audio recordings (i.e., outside of the tr
 
 The *CNN_wav.py* script trains a convolutional neural network (CNN) to detect the presence of voice in audio signals. Specifically, 10,000 spectrogram images are manually labeled and used as the training dataset to enable voice activity classification.
 
-### Time_split.py
+### Speech_time_marker.py
 
-The *Time_split.py* script takes a .wav file as input and segments it using a 50 ms window size with a 10 ms sliding step. It outputs the estimated start and end times of detected speech segments.
+The *Speech_time_marker.py* script takes a .wav file as input and segments it using a 50*ms* window size with a 10*ms* sliding step. It outputs the estimated start and end times of detected speech segments.
 
 ---
 ## How to use the LeASR
 
 ### demo
-If you just want to experience the use of LeASR, a simple ASR demo is provided in the **demo** file. You only need to prepare the audio and the fine-tuned model to complete the recognition process. And to simplify the steps, the contextual audio can be directly spliced for input.
+
+If you simply want to try out LeASR, a lightweight automatic speech recognition (ASR) demo is provided in the **demo** folder. To run the demo, you only need to prepare an audio file and a fine-tuned model. For converience, contextual audio segments can be concatenated into a single input to streamline the recognition process.
 
 ### LeASR
 #### This folder contains some of the source code for our fine-tuning training and evaluation
