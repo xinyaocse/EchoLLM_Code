@@ -12,7 +12,7 @@ The millimeter-wave radar system (IWR1443+DCA1000EVM) is configured and connecte
 
 ### Initialization
 
-The Initialization_script folder contains the necessary ​​Lua scripts​​ and ​​initialization files required​​ for establishing a connection with mmWave Studio. To proceed:
+The *Initialization_script* folder contains the necessary ​​Lua scripts​​ and ​​initialization files required​​ for establishing a connection with mmWave Studio. To proceed:
 
 - ​​Launch mmWave Studio​​ and select the correct ​​serial port​​.
 - Run the initialization scripts until ​​"SUCCESS"​​ is displayed.
@@ -22,11 +22,11 @@ You can ​​customize the Lua script​​s to modify radar configuration para
 
 ### Verification
 
-The Verification_script folder provides a method to verify the successful configuration and operational status of the radar. Specifically, the bone conduction headphones emits a linearly frequency-modulated signal, which is sampled and recorded by the mmWave radar using the Lua scripts in this folder.
+The *Verification_script* folder provides a method to verify the successful configuration and operational status of the radar. Specifically, the bone conduction headphones emits a linearly frequency-modulated signal, which is sampled and recorded by the mmWave radar using the Lua scripts in this folder.
 
 ### Measurement
 
-The measurement folder contains five files. Among them, *a​​dc_dataCaptureTest_audio.lua​​* serves as the radar configuration file. The remaining four scripts are used for the following purposes:
+The *Measurement_script* folder contains five files. Among them, *a​​dc_dataCaptureTest_audio.lua​​* serves as the radar configuration file. The remaining four scripts are used for the following purposes:
 
 - *adc_dataCapture_model.mlx*: Synchronizes mmWave data acquisition with batch audio playback via bone conduction headphones.
 - *muti_loc_exp_test_mti_beamform.mlx*: Implements signal-to-noise (SNR)-based optimal range bin selection.
