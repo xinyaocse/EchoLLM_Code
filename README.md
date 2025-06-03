@@ -11,13 +11,14 @@
 The millimeter-wave radar system (IWR1443+DCA1000EVM) is configured and connected in accordance with TI's official guidelines. The provided code is designed to run in an environment equipped with mmWave-Studio 2.1.1 and MATLAB Runtime Engine v8.5.1. This documentation details the procedures for extracting and enhancing vibration signals using mmWave radar, utilizing the specified hardware and software tools to enable accurate data acquisition and signal analysis.
 
 ### Initialization
-The Initialization_script folder contains provided ​​Lua files​​ and ​​initialization scripts​​ for connecting to mmWave Studio. To proceed:
+
+The Initialization_script folder contains the necessary ​​Lua scripts​​ and ​​initialization files required​​ for establishing a connection with mmWave Studio. To proceed:
 
 - ​​Launch mmWave Studio​​ and select the correct ​​serial port​​.
-- Run the scripts until ​​"Success"​​ is displayed.
-- ​Note:​​ Ensure the radar configuration file path is updated in the script.
+- Run the initialization scripts until ​​"Success"​​ is displayed.
+- ​Note:​​ Ensure that the path to the radar configuration file is correctly specified in the script.
 
-You can ​​customize the Lua script​​ to modify radar configuration parameters according to your requirements.
+You can ​​customize the Lua script​​s to modify radar configuration parameters according to your specific requirements.
 
 ### Verification
 
