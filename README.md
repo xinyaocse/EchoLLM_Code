@@ -31,7 +31,7 @@ In the measurement folder, there are five files. Among them, *a​​dc_dataCapt
 - *adc_dataCapture_model.mlx*: Control mmWave data acquisition synchronously while the bone conduction headphone plays audio in batches.
 - *muti_loc_exp_test_mti_beamform.mlx*: Implements an SNR-based decision mechanism for determining the optimal range bin.
 - *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm for denoision.
-- *final_data_process_923.mlx*, we provide a streamlined method to determine the range bin of the mmWave file, extract the corresponding phase change data, remove background noise, and remove head movements. Finally, save the result to a WAV file.
+- *final_data_process_923.mlx*: Provides a streamlined method to determine the range bin of the mmWave file, extract the corresponding phase change data, remove background noise, and remove head movements. Finally, save the result to a WAV file.
 
 
 If it is used for unknown audio length (non-training and testing phases), the radar frame rate of the profile is set to a large and the CNN method in the paper is used to identify the voice time period.
