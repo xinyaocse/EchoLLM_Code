@@ -68,22 +68,22 @@ If you simply want to try out LeASR, a lightweight automatic speech recognition 
 
 
 #### Local Deployment Instructions
-- First, you need to prepare the dataset and JSON file for configuration. We provide multiple reading templates in the *dataset* folder. You can also rewrite the methods yourself. An example of our JSON file is as follows:
+- First, prepare your dataset and the corresponding JSON configuration file. Several dataset reading templates are provided in the *dataset* folder, which you can either use directly or customize as needed. You may also implement your own data loading methods if necessary. An example JSON configuration file is shown below:
 ```json
     [{
-        "previous_text": "Did anyone get hurt? ",
-        "current_text": "Two people were injured. ",
+        "previous_text": "Did anyone get hurt?",
+        "current_text": "Two people were injured.",
         "target_audio": "/root/public/....",
         "audio_pre": "04968-06_Raw_0.wav",
         "audio_after": "04968-07_Raw_0.wav",
         "id": "04968-07",
         "delay_time": "0.3647305929570286",
-        "transcript":"Did anyone get hurt? Two people were injured."
+        "transcript": "Did anyone get hurt? Two people were injured."
         ...(Experiment-specific data)
     },...]
 ```
-- Second, change the position of the pre-trained model and the script position of the data loader in the model you selected (The pre-trained model can be obtained at Huggingface) and optionally write the solution evaluation results back to JSON for WER_B calculations.
-- Note that for a combined model like HuBERT+BART, there is generated code in the *model* folder. The following table describes how to set the training parameters.
+- Second, update the path to the pre-trained model and the data loader script in the selected model. (The pre-trained model can be downloaded from Hugging Face.) Optionally, you may write the evaluation results back to a JSON file for computing the WER_B metric.
+- Note: For combined models such as HuBERT+BART, the corresponding training code is provided in the *model* folder. The following table outlines how to configure the training parameters.
 ```python
 --dataset_name="librispeech_asr"
 --model_name_or_path="/root/public/....(your path)"
