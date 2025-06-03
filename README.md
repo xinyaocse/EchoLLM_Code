@@ -131,7 +131,8 @@ META_DATA_TRAIN_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test
 META_DATA_TEST_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_test.json'
 META_DATA_VAL_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_eval_JP_eval.json'
 ```
-For different data loading scenarios, the loading code of the eval file needs to be changed
+For different data loading scenarios, the data loading logic in the evaluation script may need to be modified accordingly.
+
 ```python
 # Data loading at different volumes, angles and Motion in exp_config
 exp_v6_config = ExpConfig({"volume": ['50', '60', '70', '80', '90', '100'], "Angle": ["15", '30', '45', '60', '75'],
@@ -149,4 +150,4 @@ config_adapter = ConfigAdapter()
 config_adapter.set_config(exp_v6_config)
 ```
 
-- The code environment is detailed in *LeASR/LeASR/requirements.txt*.
+- The required code environment is specified in *LeASR/LeASR/requirements.txt*.
