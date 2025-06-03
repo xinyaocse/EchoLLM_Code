@@ -7,7 +7,6 @@ if __name__ == '__main__':
     if create_name is "HuBART":
         encoder_id = "./dataset_text_audio/pretrained_models/models/hubert-base-ls960/"
         decoder_id = "./dataset_text_audio/pretrained_models/models/bart-base/"
-
         # load and save speech-encoder-decoder model
         # set some hyper-parameters for training and evaluation
         model = SpeechEncoderDecoderModel.from_encoder_decoder_pretrained(encoder_id, decoder_id,
@@ -17,12 +16,11 @@ if __name__ == '__main__':
         model.config.eos_token_id = model.decoder.config.eos_token_id
         model.config.pad_token_id = model.decoder.config.pad_token_id
         model.save_pretrained("./dataset_text_audio/pretrained_models/models/mode_hu-bart/")
-
         # load and save processor
         feature_extractor = AutoFeatureExtractor.from_pretrained(encoder_id)
         tokenizer = AutoTokenizer.from_pretrained(decoder_id)
         processor = Wav2Vec2Processor(feature_extractor, tokenizer)
-        processor.save_pretrained("./dataset_text_audio/pretrained_models/models/mode_hu-bart-large/")
+        processor.save_pretrained("./dataset_text_audio/pretrained_models/models/mode_hu-bart/")
     
     elif create_name is "HuBART-L":
                 encoder_id = "./dataset_text_audio/pretrained_models/models/hubert-base-ls960/"
