@@ -61,7 +61,7 @@ If you simply want to try out LeASR, a lightweight automatic speech recognition 
 ### LeASR
 
 #### Scripts for LeASR fine-tuning, training, and evaluation
-- creat_model: Combines the HuBERT encoder with the BART (or BART-Large) decoder to generate the pre-trained model architecture.
+- creat_model: Modifies the required model names (HuBART, HuBART-L, Whisper, SpeechT5) and generate the corresponding pre-trained models to the specified file path.
 - dataset: Contains scripts for dataset configure. During training and testing, the data loading logic for different datasets can be modified via this code. Users need to adjust paths and related metadata according to their local dataset setup.
 - metrics: Provides code for computing the Word Error Rate (WER). Specifically, *wer.py* is used during training, while *Cal_exp_wer.py* is used to compute the evaluation-phase metric WER_B.
 - others: Includes training and testing scripts for various encoder-decoder configurations. Multiple similar versions of the same model may exist to accommodate different dataset formats and experimental settings. Users should ensure they select the appropriate version that matches their dataset format.
