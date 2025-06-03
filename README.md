@@ -110,14 +110,14 @@ In this script, a .wav file is entered, split by a 50ms size and 10ms sliding wi
 
 ### Notes
 
-For more information about how to load the dataset, see the file at the beginning of the *libri_pre_16k_noised_dialog_* and the *exp_config* file in the dataset folder. The former is used for training, evaluation and testing of the language as a whole. The latter is the configuration of the ablation experiment.
+- For more information about how to load the dataset, see the file at the beginning of the *libri_pre_16k_noised_dialog_* and the *exp_config* file in the dataset folder. The former is used for training, evaluation and testing of the language as a whole. The latter is the configuration of the ablation experiment.
 ```python
 # Dataset path settings in libri_pre_16k_noised_dialog_JP.py
 META_DATA_TRAIN_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_train.json'
 META_DATA_TEST_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_test.json'
 META_DATA_VAL_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_eval_JP_eval.json'
 ```
-
+For different data loading scenarios, the loading code of the eval file needs to be changed
 ```python
 # Data loading at different volumes, angles and Motion in exp_config
 exp_v6_config = ExpConfig({"volume": ['50', '60', '70', '80', '90', '100'], "Angle": ["15", '30', '45', '60', '75'],
@@ -135,4 +135,4 @@ config_adapter = ConfigAdapter()
 config_adapter.set_config(exp_v6_config)
 ```
 
-For different data loading scenarios, the loading code of the eval file needs to be changed
+- The code environment is detailed in *LeASR/LeASR/requirements.txt*.
