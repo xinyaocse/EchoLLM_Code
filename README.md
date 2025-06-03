@@ -15,7 +15,7 @@ The millimeter-wave radar system (IWR1443+DCA1000EVM) is configured and connecte
 The Initialization_script folder contains the necessary ​​Lua scripts​​ and ​​initialization files required​​ for establishing a connection with mmWave Studio. To proceed:
 
 - ​​Launch mmWave Studio​​ and select the correct ​​serial port​​.
-- Run the initialization scripts until ​​"Success"​​ is displayed.
+- Run the initialization scripts until ​​"SUCCESS"​​ is displayed.
 - ​Note:​​ Ensure that the path to the radar configuration file is correctly specified in the script.
 
 You can ​​customize the Lua script​​s to modify radar configuration parameters according to your specific requirements.
@@ -26,23 +26,13 @@ The Verification_script folder provides a method to verify the successful config
 
 ### Measurement
 
-The measurement folder contains three main files:
-- *adc_dataCapture_model_test.mlx*: Used to sample the vibration signal from the bone conduction headphones.
-- *dataCaptureTest_audio.lua*: Allows modification of radar configuration parameters and sampling duration.
-- *final_data_process_923.mlx*: Converts raw .bin data into .wav audio files.
+In the measurement folder, there are five files. Among them, *a​​dc_dataCaptureTest_audio.lua​​*a is the configuration file for radar parameters. The remaining four code files are used for:
 
-Additional scripts include:
 - *adc_dataCapture_model.mlx*: Control mmWave data acquisition synchronously while the bone conduction headphone plays audio in batches.
-- *muti_loc_exp_test_mti_beamform.mlx*: Implements an SNR-based decision mechanism.
+- *muti_loc_exp_test_mti_beamform.mlx*: Implements an SNR-based decision mechanism for determining the optimal range bin.
 - *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm for denoision.
 - *final_data_process_923.mlx*, we provide a streamlined method to determine the range bin of the mmWave file, extract the corresponding phase change data, remove background noise, and remove head movements. Finally, save the result to a WAV file.
 
-In the measurement folder, there are three files: adc_dataCapture_model_test.mlx is used to sample the vibration signal of BCH. dataCaptureTest_audio.lua: Modify the configuration and set the sampling duration. final_data_process_923.mlx converts bin data into wav data. 
-- In the *adc_dataCapture_model.mlx*, the audio is played back in BCH in batches and the mmWave acquisition is controlled synchronously.
-- In the *muti_loc_exp_test_mti_beamform* script we provide code for SNR-based judgment.
-- In the *fmcw_process_to_audio_local_circle* script we provide code for circle-fitting denoising.
-  
-- In the code *final_data_process_923*, we provide a streamlined method to determine the range bin of the mmWave file, extract the corresponding phase change data, remove background noise, and remove head movements. Finally, save the result to a WAV file.
 
 If it is used for unknown audio length (non-training and testing phases), the radar frame rate of the profile is set to a large and the CNN method in the paper is used to identify the voice time period.
 
@@ -124,7 +114,7 @@ If you just want to experience the use of LeASR, a simple ASR demo is provided i
 
 ### Notes
 
-- For more information about how to load the dataset, see the file at the beginning of the *libri_pre_16k_noised_dialog_* and the *exp_config* file in the dataset folder. The former is used for training, evaluation and testing of the language as a whole. The latter is the configuration of the ablation experiment.
+- For more information about how to load the dataset, see the file at the beginning of the *libri_pre_16k_noised_dialog_.py* and the *exp_config.py* file in the dataset folder. The former is used for training, evaluation and testing of the language as a whole. The latter is the configuration of the ablation experiment.
 ```python
 # Dataset path settings in libri_pre_16k_noised_dialog_JP.py
 META_DATA_TRAIN_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_train.json'
