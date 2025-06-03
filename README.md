@@ -55,7 +55,7 @@ If you just want to experience the use of LeASR, a simple ASR demo is provided i
 #### This folder contains some of the source code for our fine-tuning training and evaluation
 * creat_model: The hubert model was combined with BART's decoder (or BART-Large's) to generate a pre-trained model.
 * dataset: The code in this folder configures the data for the experiment. Specifically, during the training or testing phase, the reads of different datasets are altered by changing that configuration code. Changes need to be made based on the address and related information of the local data.
-* metrics: The calculation method of WER is provided for model training. Among them, wer.py is used in the model training phase, and Cal_exp_wer.py is used to calculate B_WER in the evaluation phase.
+* metrics: The calculation method of WER is provided for model training. Among them, wer.py is used in the model training phase, and Cal_exp_wer.py is used to calculate WER_B in the evaluation phase.
 * others: Training and testing code for different encoder-decoder combinations. For the same model, there may be multiple codes with high similarity (because there are multiple dataset forms and test contents), if necessary, pay attention to match your own dataset form.
 
 #### How to deploy locall?
