@@ -69,7 +69,7 @@ In this script, a .wav file is entered, split by a 50ms size and 10ms sliding wi
         "id": "04968-07",
         "delay_time": "0.3647305929570286",
         "transcript":"Did anyone get hurt? Two people were injured."
-        ......(Experiment-specific data)
+        ...(Experiment-specific data)
     },...]
 ```
 - Second, change the position of the pre-trained model and the script position of the data loader in the model you selected (The pre-trained model can be obtained at Huggingface) and optionally write the solution evaluation results back to JSON for WER_B calculations.
