@@ -26,7 +26,7 @@ The Verification_script folder provides a method to verify the successful config
 
 ### Measurement
 
-In the measurement folder, there are five files. Among them, *a​​dc_dataCaptureTest_audio.lua​​*a is the configuration file for radar parameters. The remaining four code files are used for:
+In the measurement folder, there are five files. Among them, *a​​dc_dataCaptureTest_audio.lua​​* is the configuration file for radar parameters. The remaining four code files are used for:
 
 - *adc_dataCapture_model.mlx*: Synchronizes mmWave data acquisition with batch audio playback through bone conduction headphones.
 - *muti_loc_exp_test_mti_beamform.mlx*: Implements SNR-based optimal range bin selection.
