@@ -54,9 +54,9 @@ The *Speech_time_marker.py* script takes a .wav file as input and segments it us
 ---
 ## How to use the LeASR
 
-### demo
+### Demo
 
-If you simply want to try out LeASR, a lightweight automatic speech recognition (ASR) demo is provided in the **demo** folder. To run the demo, you only need to prepare an audio file and a fine-tuned model. For converience, contextual audio segments can be concatenated into a single input to streamline the recognition process.
+If you simply want to try out LeASR, a lightweight automatic speech recognition (ASR) demo is provided in the **Demo** folder. To run the demo, you only need to prepare an audio file and a fine-tuned model. For converience, contextual audio segments can be concatenated into a single input to streamline the recognition process.
 
 ### LeASR
 
