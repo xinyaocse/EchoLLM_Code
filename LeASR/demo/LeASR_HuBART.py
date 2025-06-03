@@ -3,7 +3,7 @@ import torch
 import librosa
 
 # Load the saved model and processor
-model_dir = "/mode_hu-bart2"
+model_dir = "/mode_hu-bart2/checkpoint"
 model = SpeechEncoderDecoderModel.from_pretrained(model_dir)
 processor = Wav2Vec2Processor.from_pretrained(model_dir)
 feature_extractor = AutoFeatureExtractor.from_pretrained(model_dir)

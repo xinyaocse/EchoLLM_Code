@@ -1,17 +1,16 @@
 import json
 import re
 import string
+
 import pandas as pd
 import datasets
 import os
 import logging
 
-# Dataset path configuration
-import torchaudio
-
-META_DATA_TRAIN_PATH = r'/root/public/dev8T/username/ASR/datasets/asr_test_223/fmcw_train.json'
-META_DATA_TEST_PATH = r'/root/public/dev8T/username/ASR/datasets/asr_test_223/fmcw_test.json'
-META_DATA_VAL_PATH = r'/root/public/dev8T/username/ASR/datasets/asr_test_223/fmcw_test.json'
+# Dataset path settings
+META_DATA_TRAIN_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_train.json'
+META_DATA_TEST_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_test.json'
+META_DATA_VAL_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_eval_JP_eval.json'
 
 def lowercase_and_remove_punctuation(text):
     """
@@ -23,7 +22,7 @@ def lowercase_and_remove_punctuation(text):
     # Convert to lowercase
     text_lower = str(text).lower()
 
-    # Create translation table for punctuation removal
+    # Create a translation table to remove punctuation
     translator = str.maketrans('', '', string.punctuation)
 
     # Remove punctuation
@@ -32,11 +31,11 @@ def lowercase_and_remove_punctuation(text):
     return text_no_punctuation
 
 def filter_extra_spaces(sentence):
-    # Use regex to remove leading/trailing spaces and extra spaces between words
+    # Use regular expressions to remove leading/trailing spaces and extra spaces between words
     filtered_sentence = re.sub(r'\s+', ' ', sentence.strip())
     return filtered_sentence
 
-# Define dataset features and their types
+# Define the features in the dataset and their types
 _FEATURES = datasets.Features(
     {
         "audio_pre": datasets.Audio(sampling_rate=16000),
@@ -75,7 +74,6 @@ class RegexpReplacer(object):
 
 replacer = RegexpReplacer()
 
-# Define the dataset class
 class LibriNoised8k(datasets.GeneratorBasedBuilder):
     BUILDER_CONFIGS = [datasets.BuilderConfig(name="default", version=datasets.Version("0.0.1"))]
     DEFAULT_CONFIG_NAME = "default"
@@ -107,7 +105,7 @@ class LibriNoised8k(datasets.GeneratorBasedBuilder):
             datasets.SplitGenerator(
                 name=datasets.Split.VALIDATION,
                 gen_kwargs={
-                    "files": get_result(META_DATA_VAL_PATH)
+                    "files": get_result(META_DATA_TEST_PATH)
                 },
             ),
         ]

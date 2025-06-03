@@ -2,8 +2,8 @@ from transformers import SpeechT5Processor, SpeechT5ForSpeechToText, WhisperProc
 import torch
 import librosa
 
-processor = WhisperProcessor.from_pretrained("/openAI_out2/checkpoint-1000")
-model = WhisperForConditionalGeneration.from_pretrained("/openAI_out2/checkpoint-1000")
+processor = WhisperProcessor.from_pretrained("/openAI_out2/checkpoint")
+model = WhisperForConditionalGeneration.from_pretrained("/openAI_out2/checkpoint")
 
 audio_file = "/distance/60/audio01_Raw_0.wav"
 audio, sr = librosa.load(audio_file, sr=processor.feature_extractor.sampling_rate)
@@ -15,4 +15,3 @@ predicted_ids = model.generate(**inputs, max_length=100)
 transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)
 
 print("Transcription:", transcription[0])
-

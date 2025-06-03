@@ -5,25 +5,24 @@ import pandas as pd
 import datasets
 import os
 import logging
-
-# Dataset path configuration
 import torchaudio
 
-META_DATA_TRAIN_PATH = r'/root/public/dev8T/username/ASR/datasets/asr_test_223/fmcw_train.json'
-META_DATA_TEST_PATH = r'/root/public/dev8T/username/ASR/datasets/asr_test_223/fmcw_test.json'
-META_DATA_VAL_PATH = r'/root/public/dev8T/username/ASR/datasets/asr_test_223/fmcw_test.json'
+# Dataset path configuration
+META_DATA_TRAIN_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_train_CN.json'
+META_DATA_TEST_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_CN.json'
+META_DATA_VAL_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_eval_CN.json'
 
 def lowercase_and_remove_punctuation(text):
     """
     Convert all characters in the string to lowercase and remove all punctuation.
 
-    :param text: The string to be processed.
-    :return: A new string that is the lowercase version of the input without punctuation.
+    :param text: The input string to be processed
+    :return: Processed string in lowercase without punctuation
     """
     # Convert to lowercase
     text_lower = str(text).lower()
 
-    # Create translation table for punctuation removal
+    # Create translation table to remove punctuation
     translator = str.maketrans('', '', string.punctuation)
 
     # Remove punctuation
@@ -75,44 +74,41 @@ class RegexpReplacer(object):
 
 replacer = RegexpReplacer()
 
-# Define the dataset class
 class LibriNoised8k(datasets.GeneratorBasedBuilder):
     BUILDER_CONFIGS = [datasets.BuilderConfig(name="default", version=datasets.Version("0.0.1"))]
     DEFAULT_CONFIG_NAME = "default"
 
     def _info(self):
         return datasets.DatasetInfo(
-            description="None",
+            description="LibriSpeech Noised Dataset",
             features=_FEATURES,
             supervised_keys=None,
-            homepage="None",
-            license="None",
-            citation="None",
+            homepage="https://example.com",
+            license="MIT",
+            citation="""@misc{libriheavy2020,
+                title={Libriheavy: A benchmark for ASR with noise},
+                author={Dataset Authors}""",
         )
 
     def _split_generators(self, dl_manager):
         return [
             datasets.SplitGenerator(
                 name=datasets.Split.TRAIN,
-                gen_kwargs={
-                    "files": get_result(META_DATA_TRAIN_PATH),
-                },
+                gen_kwargs={"files": get_result(META_DATA_TRAIN_PATH)},
             ),
             datasets.SplitGenerator(
                 name=datasets.Split.TEST,
-                gen_kwargs={
-                    "files": get_result(META_DATA_TEST_PATH)
-                },
+                gen_kwargs={"files": get_result(META_DATA_TEST_PATH)}
             ),
             datasets.SplitGenerator(
                 name=datasets.Split.VALIDATION,
-                gen_kwargs={
-                    "files": get_result(META_DATA_VAL_PATH)
-                },
+                gen_kwargs={"files": get_result(META_DATA_VAL_PATH)}
             ),
         ]
 
     def _generate_examples(self, files):
+        # metadata = pd.read_json(metadata_path, lines=True)
+
         for id_, item in enumerate(files):
             text_upper = filter_extra_spaces(lowercase_and_remove_punctuation(item['transcript']))
 
@@ -120,8 +116,12 @@ class LibriNoised8k(datasets.GeneratorBasedBuilder):
                 audio_pre_path = item["audio_pre"]
                 audio_after_path = item["audio_after"]
                 data_name = os.path.basename(audio_after_path)
+                # audio, sr = torchaudio.load(audio_path)
                 audio_pre = {"path": audio_pre_path}
                 audio_after = {"path": audio_after_path}
+                # trans = {"audio": audio, "text_pre": text_pre, "text_upper": text_upper}
                 yield id_, {"audio_pre": audio_pre, "audio_after" : audio_after, "text_upper": text_upper, "id": data_name}
+                # pass
             except:
                 continue
+

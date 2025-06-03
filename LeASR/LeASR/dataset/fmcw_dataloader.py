@@ -215,10 +215,16 @@ def get_ve_dataset(feature_extractor, tokenizer, is_train=True, is_val=False):
 
     def prepare_dataset(batch):
         # process audio
-        sample = batch['audio']
-        inputs = feature_extractor(
-            sample["array"], sampling_rate=sample["sampling_rate"], return_attention_mask=False
+        sample_pre = batch['audio_pre']
+        inputs_pre = feature_extractor(
+            sample_pre["array"], sampling_rate=sample_pre["sampling_rate"], return_attention_mask=False
         )
+        sample_after = batch['audio_after']
+        inputs_after = feature_extractor(
+            sample_after["array"], sampling_rate=sample_after["sampling_rate"], return_attention_mask=False
+        )
+        inputs = torch.cat([inputs_pre.input_values, inputs_after.input_values], dim=1)
+        attention_mask = torch.cat([pre.attention_mask, after.attention_mask], dim=1)
         # process audio length
         batch['input_values'] = inputs.get("input_values")[0]
         batch["input_length"] = len(sample["array"])

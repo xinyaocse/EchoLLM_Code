@@ -9,7 +9,7 @@ import logging
 
 import torchaudio
 
-from dataset.dataset_config import no_bof_dataset, ASRDataset, DatasetAdapter, flag_dataset, noised_b_dataset
+from dataset.dataset_config import no_bof_dataset, ASRDataset, DatasetAdapter, flag_dataset, noised_b_dataset, no_bof_dataset_fast,
 
 dataset = DatasetAdapter()
 dataset.set_datasets(flag_dataset)
@@ -44,8 +44,8 @@ def filter_extra_spaces(sentence):
 
 _FEATURES = datasets.Features(
     {
-        "audio": datasets.Audio(sampling_rate=16000),
-        # "text_pre": datasets.Value("string"),
+        "audio_pre": datasets.Audio(sampling_rate=16000),
+        "audio_after": datasets.Audio(sampling_rate=16000),
         "text_upper": datasets.Value("string"),
         "id": datasets.Value("string")
     },
@@ -128,13 +128,18 @@ class LibriNoised8k(datasets.GeneratorBasedBuilder):
         # metadata = pd.read_json(metadata_path, lines=True)
 
         for id_, item in enumerate(files):
-            text_upper = filter_extra_spaces(lowercase_and_remove_punctuation(replacer.replace(dataset.dataset.get_label(item).lower())))
+            text_upper = filter_extra_spaces(lowercase_and_remove_punctuation(item['transcript']))
 
+            try:
+                audio_pre_path = item["audio_pre"]
+                audio_after_path = item["audio_after"]
+                data_name = os.path.basename(audio_after_path)
+                # audio, sr = torchaudio.load(audio_path)
+                audio_pre = {"path": audio_pre_path}
+                audio_after = {"path": audio_after_path}
+                # trans = {"audio": audio, "text_pre": text_pre, "text_upper": text_upper}
+                yield id_, {"audio_pre": audio_pre, "audio_after" : audio_after, "text_upper": text_upper, "id": data_name}
+                # pass
+            except:
+                continue
 
-            audio_path = dataset.dataset.get_audio(item)
-            data_name = os.path.basename(audio_path)
-            # audio, sr = torchaudio.load(audio_path)
-            audio = {"path": audio_path}
-            # trans = {"audio": audio, "text_pre": text_pre, "text_upper": text_upper}
-            yield id_, {"audio": audio, "text_upper": text_upper, "id": data_name}
-            # pass

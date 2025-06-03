@@ -9,7 +9,7 @@ import os
 import logging
 sys.path.append('/root/code_project/audio/asr_pre_dataset/exp/')
 from exp_config import config_adapter
-
+# Dataset path configuration
 import torchaudio
 
 from dataset.exp_config import ExpConfig
@@ -22,6 +22,7 @@ META_DATA_VAL_PATH = config_adapter.config.json_path
 VALUE_LIST = ExpConfig.VALUE_LIST
 
 
+
 def lowercase_and_remove_punctuation(text):
     """
     Convert all characters in the string to uppercase and remove all punctuation.
@@ -29,24 +30,30 @@ def lowercase_and_remove_punctuation(text):
     :param text: The string to be processed.
     :return: A new string that is the uppercase version of the input string without punctuation.
     """
+    # Convert to uppercase
     text_upper = str(text).lower()
+
+    # Create a translation table to remove punctuation
     translator = str.maketrans('', '', string.punctuation)
+
+    # Remove punctuation
     text_no_punctuation = text_upper.translate(translator)
 
     return text_no_punctuation
 
 
 def filter_extra_spaces(sentence):
+    # Use regular expression to remove leading/trailing spaces and extra spaces between words
     filtered_sentence = re.sub(r'\s+', ' ', sentence.strip())
 
     return filtered_sentence
 
 
-
+# Define dataset features and their types
 _FEATURES = datasets.Features(
     {
-        "audio": datasets.Audio(sampling_rate=16000),
-        # "text_pre": datasets.Value("string"),
+        "audio_pre": datasets.Audio(sampling_rate=16000),
+        "audio_after": datasets.Audio(sampling_rate=16000),
         "text_upper": datasets.Value("string"),
         "id": datasets.Value("string")
     },
@@ -87,6 +94,7 @@ replacer = RegexpReplacer()
 
 
 
+# Define dataset class
 class LibriNoised8k(datasets.GeneratorBasedBuilder):
     BUILDER_CONFIGS = [datasets.BuilderConfig(name="default", version=datasets.Version("0.0.1"))]
     DEFAULT_CONFIG_NAME = "default"
@@ -133,11 +141,17 @@ class LibriNoised8k(datasets.GeneratorBasedBuilder):
             for key in  config_adapter.config.key_list:
                 for value in files[item][key]:
                     # print("aa", files[item][key][value])
-                    audio_path = files[item][key][value]['noisy_audio_add_flag']
+                    try:
+                        audio_pre_path = files[item][key][value]['noisy_audio_add_flag_pre']
+                        audio_after_path = files[item][key][value]['noisy_audio_add_flag_after']
+                    except:
+                        audio_pre_path = files[item][key][value]['audio_pre']
+                        audio_after_path = files[item][key][value]['audio_after']
                     text_upper = filter_extra_spaces(lowercase_and_remove_punctuation(replacer.replace(files[item]['transcript_flag'].lower())))
-                    data_name = os.path.basename(audio_path)
+                    data_name = os.path.basename(audio_pre_path)
                     # audio, sr = torchaudio.load(audio_path)
-                    audio = {"path": audio_path}
+                    audio_pre = {"path": audio_pre_path}
+                    audio_after = {"path": audio_after_path}
                     # trans = {"audio": audio, "text_pre": text_pre, "text_upper": text_upper}
-                    yield index, {"audio": audio, "text_upper": text_upper, "id": data_name}
+                    yield index, {"audio_pre": audio_pre, "audio_after": audio_after, "text_upper": text_upper, "id": data_name}
                     index += 1
