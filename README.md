@@ -121,8 +121,10 @@ If you simply want to try out LeASR, a lightweight automatic speech recognition 
 ### Notes
 
 - For more information on how the dataset is loaded, refer to the beginning of the *libri_pre_16k_noised_dialog_.py* file and the *exp_config.py* file in the *dataset* folder.
--- The former defines the data loading process used for training, evaluation, and testing across the full language dataset.
--- The latter provides configuration settings for ablation experiments.
+  
+- - The former defines the data loading process used for training, evaluation, and testing across the full language dataset.
+- - The latter provides configuration settings for ablation experiments.
+    
 ```python
 # Dataset path settings in libri_pre_16k_noised_dialog_JP.py
 META_DATA_TRAIN_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_train.json'
