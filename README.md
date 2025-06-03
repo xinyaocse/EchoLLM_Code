@@ -15,7 +15,7 @@ The millimeter-wave radar system (IWR1443+DCA1000EVM) is configured and connecte
 The *Initialization_script* folder contains the necessary ​​Lua script​ and ​​initialization file required​​ for establishing a connection with mmWave Studio. To proceed:
 
 - ​​Launch mmWave Studio​​ and select the correct ​​serial port​​.
-- Run the initialization scripts until ​​"SUCCESS"​​ is displayed.
+- Run the initialization script until ​​"SUCCESS"​​ is displayed.
 
 ​Note:​​ Ensure that the path to the radar configuration file is correctly specified in the script.
 
