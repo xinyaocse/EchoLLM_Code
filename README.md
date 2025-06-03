@@ -25,10 +25,11 @@ In the Verification_script folder, we provide a way to verify the successful con
 
 ### Measurement
 
-In the measurement folder, there are three files: adc_dataCapture_model_test.mlx is used to sample the vibration signal of BCH. dataCaptureTest_audio.lua: Modify the configuration and set the sampling duration. finnal_data_process_923.mlx converts bin data into wav data.
+In the measurement folder, there are three files: adc_dataCapture_model_test.mlx is used to sample the vibration signal of BCH. dataCaptureTest_audio.lua: Modify the configuration and set the sampling duration. finnal_data_process_923.mlx converts bin data into wav data. 
+- In the *adc_dataCapture_model.mlx*, the audio is played back in BCH in batches and the mmWave acquisition is controlled synchronously.
 - In the *muti_loc_exp_test_mti_beamform* script we provide code for SNR-based judgment.
 - In the *fmcw_process_to_audio_local_circle* script we provide code for circle-fitting denoising.
-- In the code finnal_data_process_923, we provide a streamlined method to determine the range bin of the mmWave file, extract the corresponding phase change data, remove background noise, and remove head movements. Finally, save the result to a WAV file.
+- In the code *finnal_data_process_923*, we provide a streamlined method to determine the range bin of the mmWave file, extract the corresponding phase change data, remove background noise, and remove head movements. Finally, save the result to a WAV file.
 
 If it is used for unknown audio length (non-training and testing phases), the radar frame rate of the profile is set to a large and the CNN method in the paper is used to identify the voice time period.
 
