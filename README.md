@@ -119,7 +119,7 @@ META_DATA_VAL_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_eval_J
 ```
 
 ```python
-# Data loading at different volumes and angles in exp_config
+# Data loading at different volumes, angles and Motion in exp_config
 exp_v6_config = ExpConfig({"volume": ['50', '60', '70', '80', '90', '100'], "Angle": ["15", '30', '45', '60', '75'],
                            "headphone": ["type2"], "distance_v80": ['40', '60', '80', '100'],
                            "Motion": ['static', "FB", "LR", "UD"]},
