@@ -127,7 +127,7 @@ If you simply want to try out LeASR, a lightweight automatic speech recognition 
     - The latter provides configuration settings for ablation experiments.
     
 ```python
-# Dataset path settings in libri_pre_16k_noised_dialog_JP.py
+# Dataset path configuration in libri_pre_16k_noised_dialog_JP.py
 META_DATA_TRAIN_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_train.json'
 META_DATA_TEST_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_test.json'
 META_DATA_VAL_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_eval_JP_eval.json'
@@ -135,7 +135,7 @@ META_DATA_VAL_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_eval_J
 For different data loading scenarios, the data loading logic in the evaluation script may need to be modified accordingly.
 
 ```python
-# Data loading at different volumes, angles and Motion in exp_config
+# Data loading under different volumes, angles and motions in exp_config.py
 exp_v6_config = ExpConfig({"volume": ['50', '60', '70', '80', '90', '100'], "Angle": ["15", '30', '45', '60', '75'],
                            "headphone": ["type2"], "distance_v80": ['40', '60', '80', '100'],
                            "Motion": ['static', "FB", "LR", "UD"]},
