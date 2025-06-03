@@ -59,13 +59,15 @@ The *Speech_time_marker.py* script takes a .wav file as input and segments it us
 If you simply want to try out LeASR, a lightweight automatic speech recognition (ASR) demo is provided in the **demo** folder. To run the demo, you only need to prepare an audio file and a fine-tuned model. For converience, contextual audio segments can be concatenated into a single input to streamline the recognition process.
 
 ### LeASR
-#### This folder contains some of the source code for our fine-tuning training and evaluation
-* creat_model: The hubert model was combined with BART's decoder (or BART-Large's) to generate a pre-trained model.
-* dataset: The code in this folder configures the data for the experiment. Specifically, during the training or testing phase, the reads of different datasets are altered by changing that configuration code. Changes need to be made based on the address and related information of the local data.
-* metrics: The calculation method of WER is provided for model training. Among them, wer.py is used in the model training phase, and Cal_exp_wer.py is used to calculate WER_B in the evaluation phase.
-* others: Training and testing code for different encoder-decoder combinations. For the same model, there may be multiple codes with high similarity (because there are multiple dataset forms and test contents), if necessary, pay attention to match your own dataset form.
 
-#### How to deploy locall?
+#### Scripts for LeASR fine-tuning, training, and evaluation
+- creat_model: Combines the HuBERT encoder with the BART (or BART-Large) decoder to generate the pre-trained model architecture.
+- dataset: Contains scripts for dataset configure. During training and testing, the data loading logic for different datasets can be modified via this code. Users need to adjust paths and related metadata according to their local dataset setup.
+- metrics: Provides code for computing the Word Error Rate (WER). Specifically, *wer.py* is used during training, while *Cal_exp_wer.py* is used to compute the evaluation-phase metric WER_B.
+- others: Includes training and testing scripts for various encoder-decoder configurations. Multiple similar versions of the same model may exist to accommodate different dataset formats and experimental settings. Users should ensure they select the appropriate version that matches their dataset format.
+
+
+#### Local Deployment Instructions
 - First, you need to prepare the dataset and JSON file for configuration. We provide multiple reading templates in the *dataset* folder. You can also rewrite the methods yourself. An example of our JSON file is as follows:
 ```json
     [{
