@@ -16,9 +16,10 @@ The *Initialization_script* folder contains the necessary ​​Lua script​ an
 
 - ​​Launch mmWave Studio​​ and select the correct ​​serial port​​.
 - Run the initialization scripts until ​​"SUCCESS"​​ is displayed.
-- ​Note:​​ Ensure that the path to the radar configuration file is correctly specified in the script.
 
-You can ​​customize the Lua script​​s to modify radar configuration parameters according to your specific requirements.
+​Note:​​ Ensure that the path to the radar configuration file is correctly specified in the script.
+
+You can ​​customize the Lua script​​ to modify radar configuration parameters according to your specific requirements.
 
 ### Verification
 
