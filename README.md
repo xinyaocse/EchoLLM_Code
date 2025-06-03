@@ -136,15 +136,15 @@ For different data loading scenarios, the data loading logic in the evaluation s
 
 ```python
 # Data loading under different volumes, angles and motions in exp_config.py
-exp_v6_config = ExpConfig({"volume": ['50', '60', '70', '80', '90', '100'], "Angle": ["15", '30', '45', '60', '75'],
-                           "headphone": ["type2"], "distance_v80": ['40', '60', '80', '100'],
+exp_v6_config = ExpConfig({"Volume": ['50', '60', '70', '80', '90', '100'], "Angle": ["15", '30', '45', '60', '75'],
+                           "Headphone": ["type2"], "distance_v80": ['40', '60', '80', '100'],
                            "Motion": ['static', "FB", "LR", "UD"]},
                           "/root/public/dev8T/username/ASR/exp/exp_v6_result.json",
                           "/root/public/dev8T/username/ASR/exp/exp_v6_pre_dataset/")
-exp_v6_config.set_path_dict({"volume": r"/root/public/dev8T/username/ASR/exp/exp_v6/volume/",
+exp_v6_config.set_path_dict({"Volume": r"/root/public/dev8T/username/ASR/exp/exp_v6/volume/",
                              "Angle": r"/root/public/dev8T/username/ASR/exp/exp_v6/Angle/",
-                             "headphone": "/root/public/dev8T/username/ASR/exp/exp_v6/headphone/",
-                             "distance_v80": r"/root/public/dev8T/username/ASR/exp/exp_v4/distance_v80/",
+                             "Headphone": "/root/public/dev8T/username/ASR/exp/exp_v6/headphone/",
+                             "Distance_v80": r"/root/public/dev8T/username/ASR/exp/exp_v6/distance_v80/",
                              "Motion": r"/root/public/dev8T/username/ASR/exp/exp_v6/Motion/"})
 ...
 config_adapter = ConfigAdapter()
