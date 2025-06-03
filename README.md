@@ -1,6 +1,6 @@
 # EchoLLM: LLM-Augmented Acoustic Eavesdropping Attack on Bone Conduction Headphones with mmWave Radar
 
-- The code for 8kHz vibration signal sampling and audio reconstruction based on IWR1443+DCA000EVM platform is available in the Vibration_Signal directory.
+- The code for 8kHz vibration signal sampling and audio reconstruction based on IWR1443+DCA1000EVM platform is available in the Vibration_Signal directory.
 - The CNN directory contains a method for estimating audio delay using a convolutional neural network.
 - The LeASR directory includes the implementation for context-aware inference of audio content leveraging four different large language models (LLMs).
 
@@ -8,7 +8,7 @@
 
 ## Vibration Signal Extraction & Vibration Signal Enhancement
 
-The usage and connection of the millimeter-wave radar system (IWR1443 + DCA000EVM) follows TI's official guidelines. The code operates in an environment configured with ​​mmWaveStudio 2.1.1​​ and ​​MATLAB Runtime Engine v8.5.1​​. This documentation outlines the methodology for acquiring vibration signals through mmWave radar technology, leveraging the specified hardware setup and software tools to achieve precise data collection and analysis.
+The millimeter-wave radar system (IWR1443+DCA1000EVM) is configured and connected in accordance with TI's official guidelines. The provided code is designed to run in an environment equipped with mmWave-Studio 2.1.1 and MATLAB Runtime Engine v8.5.1. This documentation details the procedures for extracting and enhancing vibration signals using mmWave radar, utilizing the specified hardware and software tools to enable accurate data acquisition and signal analysis.
 
 ### Initialization
 The Initialization_script folder contains provided ​​Lua files​​ and ​​initialization scripts​​ for connecting to mmWave Studio. To proceed:
