@@ -23,7 +23,7 @@ You can ​​customize the Lua script​​ to modify radar configuration param
 
 In the Verification_script folder, we provide a way to verify the successful configuration and usability of the radar. Specifically, the BCH generates a linearly frequency-modulated sound, and the mmWave samples and saves using the lua files in this folder.
 
-### measurement
+### Measurement
 
 In the measurement folder, there are three files: adc_dataCapture_model_test.mlx is used to sample the vibration signal of BCH. dataCaptureTest_audio.lua: Modify the configuration and set the sampling duration. finnal_data_process_923.mlx converts bin data into wav data.
 - In the muti_loc_exp_test_mti_beamform and fmcw_process_to_audio_local_circle scripts, we provide code for SNR-based judgment and circle-fitting denoising, respectively
