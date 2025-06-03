@@ -1,8 +1,8 @@
 # EchoLLM: LLM-Augmented Acoustic Eavesdropping Attack on Bone Conduction Headphones with mmWave Radar
 
-- The code for 8kHz vibration sampling and audio recovery based on IWR1443+DCA000EVM is provided in the Vibration_Signal.
-- The CNN folder provides a method for calculating audio delay
-- LeASR provides code for context-aware inference of audio content based on four LLMs
+- The code for 8kHz vibration signal sampling and audio reconstruction based on IWR1443+DCA000EVM platform is available in the Vibration_Signal directory.
+- The CNN directory contains a method for estimating audio delay using a convolutional neural network.
+- The LeASR directory includes the implementation for context-aware inference of audio content leveraging four different large language models (LLMs).
 
 ---
 
