@@ -26,8 +26,9 @@ In the Verification_script folder, we provide a way to verify the successful con
 ### Measurement
 
 In the measurement folder, there are three files: adc_dataCapture_model_test.mlx is used to sample the vibration signal of BCH. dataCaptureTest_audio.lua: Modify the configuration and set the sampling duration. finnal_data_process_923.mlx converts bin data into wav data.
-- In the muti_loc_exp_test_mti_beamform and fmcw_process_to_audio_local_circle scripts, we provide code for SNR-based judgment and circle-fitting denoising, respectively
-
+- In the *muti_loc_exp_test_mti_beamform* script we provide code for SNR-based judgment.
+- In the *fmcw_process_to_audio_local_circle* script we provide code for circle-fitting denoising.
+- In the code finnal_data_process_923, we provide a streamlined method to determine the range bin of the mmWave file, extract the corresponding phase change data, remove background noise, and remove head movements. Finally, save the result to a WAV file.
 
 If it is used for unknown audio length (non-training and testing phases), the radar frame rate of the profile is set to a large and the CNN method in the paper is used to identify the voice time period.
 
@@ -37,24 +38,23 @@ If it is used for unknown audio length (non-training and testing phases), the ra
 
 ### CNN_wav.py
 
-In this script, we artificially label 10,000 spectral images and train them to determine whether there is a voice. This is a very simple problem of binary classification.
-
+In this script, we artificially label 10,000 spectral images and train them to determine whether there is a voice.
 ### Time_split.py
 
-In this script, a .wav file is entered, split by a 50ms size and 10ms sliding window, and the start and end times of the sound are output
+In this script, a .wav file is entered, split by a 50ms size and 10ms sliding window, and the start and end times of the sound are output.
 
 ---
 
 ## How to use the LeASR
 ---
 ### demo
-> If you just want to experience the use of LeASR, a simple ASR demo is provided in the **demo** file. You only need to prepare the audio and the fine-tuned model to complete the recognition process. And to simplify the steps, the contextual audio can be directly spliced for input.
+If you just want to experience the use of LeASR, a simple ASR demo is provided in the **demo** file. You only need to prepare the audio and the fine-tuned model to complete the recognition process. And to simplify the steps, the contextual audio can be directly spliced for input.
 
 ### LeASR
 #### This folder contains some of the source code for our fine-tuning training and evaluation
-* creat_model: The hubert model was combined with BART's decoder to generate a pre-trained model
-* dataset: Perhaps this part needs to meet its own dataset form. Since we have a variety of datasets, some of the code content is similar, just for reference.
-* metrics: WER
+* creat_model: The hubert model was combined with BART's decoder (or BART-Large's) to generate a pre-trained model.
+* dataset: The code in this folder configures the data for the experiment. Specifically, during the training or testing phase, the reads of different datasets are altered by changing that configuration code. Changes need to be made based on the address and related information of the local data.
+* metrics: The calculation method of WER is provided for model training. Among them, wer.py is used in the model training phase, and Cal_exp_wer.py is used to calculate B_WER in the evaluation phase.
 * others: Training and testing code for different encoder-decoder combinations. For the same model, there may be multiple codes with high similarity (because there are multiple dataset forms and test contents), if necessary, pay attention to match your own dataset form.
 
 #### How to deploy locall?
