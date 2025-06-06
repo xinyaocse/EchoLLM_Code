@@ -59,7 +59,7 @@ The *Measurement_script* folder contains five files. Among them, *a​​dc_data
 Note: When dealing with unknown-length audio recordings (i.e., outside of the training or testing phases), it is recommended to configure a high radar frame rate in the profile and apply the CNN-based method introduced in the paper to detect the actual voice segments.
 
 
-### CNN-based Classification Model
+### CNN-based Voice Activity Detector (EchoVAD)
 
 - *CNN_wav.py*: Trains a convolutional neural network (CNN) to detect the presence of voice in audio signals. Specifically, 10,000 spectrogram images are manually labeled and used as the training dataset to enable voice activity classification. 
 - *Speech_time_marker.py*: Takes a .wav file as input and segments it using a 50*ms* window size with a 10*ms* sliding step. It outputs the estimated start and end times of detected speech segments. (Corresponding to 4.2.3 Headphone Phase Estimation)
