@@ -46,12 +46,12 @@ The *Verification_script* folder offers methods to verify correct radar configur
 The *Measurement_script* folder contains five scripts, with *adc_dataCaptureTest_audio.lua* serving as the main radar configuration script. The remaining four scripts have the following functionalities:
 
 - *adc_dataCapture_model.mlx*: Synchronizes mmWave data acquisition with batch audio playback via bone conduction headphones.
-- *muti_loc_exp_test_mti_beamform.mlx*: Implements optimal range bin selection based on signal-to-noise ratio (SNR). (Corresponds to Section 4.2.2: Victim vs. Headphone)
-- *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm to suppress noise and enhance signal clarity. (Corresponds to Section 4.3.1: Background Reflection Reduction)
 - *final_data_process.mlx*: Provides a complete signal-processing pipeline, including:
-    - Identifying the target range bin. (Corresponding to Section 4.2.1: Victim vs. Other Objects).
-    - Extracting phase variation signals. (Corresponding to Section 4.2.3: Headphone Phase Estimation).
-    - Eliminating background noise and head motion artifacts. (Corresponding to Section 4.3.2: Motion Calibration).
+    - Target range bin identification. (Section 4.2.1: Victim vs. Other Objects).
+    - Optimal range bin selection based on signal-to-noise ratio (SNR) (Section 4.2.2: Victim vs. Headphone).
+    - Phase variation signal extraction (Section 4.2.3: Headphone Phase Estimation).
+    - Noise suppression and signal clarity enhancement using a circle-fitting algorithm (Section 4.3.1: Background Reflection Reduction).
+    - Removal of background noise and head motion artifacts (Section 4.3.2: Motion Calibration).
     - Exporting the processed signal as *.wav* files.
 
 Note: When processing audio recordings of unknown length (i.e., recordings outside training or testing scenarios), configure a high radar frame rate and apply the CNN-based voice activity detector described below to accurately identify actual voice segments.
@@ -71,13 +71,13 @@ If you simply want to try LeASR, a lightweight automatic speech recognition (ASR
 
 ### LeASR Directory Structure
 
-The LeASR directory is organized into four distinct folders:
-- *Model_loading*:
+The *LeASR* directory is organized into four main folders, each responsible for a key component of the system:
+- *Model_loading*: Contains scripts for building, training, and evaluating the core speech recognition models.
    - *model_create.py*: Generates and saves pre-trained models (e.g., HuBART, HuBART-L, Whisper, SpeechT5) at user-defined locations.
    - Training and evaluation scripts:
       - *train_HuBART.py & eval_HuBART.py*: Training and evaluation of the HuBART model.
       - *train_HuBART_L.py & eval_HuBART_L.py*: Training and evaluation of the HuBART-L model.
-      - *train_Whiper.py & eval_Whiper.py*: Training and evaluation of the Whiper model. Because it is a multilingual model, it requires language customization:
+      - *train_Whiper.py & eval_Whiper.py*: Training and evaluation of the Whiper model. Since Whisper is a multilingual model, language-specific decoder prompts must be configured. For example:
       ```python
           forced_decoder_ids = processor.get_decoder_prompt_ids(
               language="English",
@@ -87,12 +87,14 @@ The LeASR directory is organized into four distinct folders:
       - *train_SpeechT5.py & eval_SpeechT5.py*: Training and evaluation of the SpeechT5 model.
 - *LLM_models*: Provides four large language models (LLMs).
 - *Data_loading*: Contains scripts managing data loading for LeASR by referencing external dataset configurations from the separate Datasets directory.
-    - *libri_pre_16k_noised_Synthetic.py*: Synthetic English datasets.
-    - *libri_pre_16k_noised_Real.py*: Real-world English datasets.
-    - *libri_pre_16k_noised_CN.py*: Chinese datasets.
-    - *libri_pre_16k_noised_FR.py*: French datasets.
-    - *libri_pre_16k_noised_JP.py*: Japanese datasets.
-    - *libri_pre_16k_noised_eval_Exp_data.py*: Experimental datasets configured via exp_config.py.
+    - Language-specific loaders:
+        - *libri_pre_16k_noised_Synthetic.py*: Loads synthetic English datasets.
+        - *libri_pre_16k_noised_Real.py*: Loads real-world English datasets.
+        - *libri_pre_16k_noised_CN.py*: Loads Chinese datasets.
+        - *libri_pre_16k_noised_FR.py*: Loads French datasets.
+        - *libri_pre_16k_noised_JP.py*: Loads Japanese datasets.
+    - Experiment-specific loader:
+        - *libri_pre_16k_noised_eval_Exp_data.py*: Loads data for experimental evaluation, referencing configuration details in *exp_config.py*.
     - *exp_config.py*: Centrally manages data loading configurations across various experimental scenarios, including controlled experiments, robustness tests, ablation studies, multilingual evaluations, and sensitive information inference.
 - *Metrics*: Provides scripts for evaluating LeASR system performance.
     - *wer.py*: Computes the Word Error Rate (WER) metric during training.
