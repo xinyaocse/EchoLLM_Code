@@ -1,6 +1,6 @@
 # EchoLLM: LLM-Augmented Acoustic Eavesdropping Attack on Bone Conduction Headphones with mmWave Radar
 
-- The *Datasets* directory includes representative subsets of all datasets used in the experiments.
+- The *Datasets* folder includes representative subsets of all datasets used in the experiments.
 - The *Vibration_Signal* directory contains the implementation of 8kHz vibration signal extraction, audio delay estimation, and signal enhancement using the IWR1443+DCA1000EVM mmWave radar platform.
 - The *LeASR* directory provides context-aware inference modules for audio content, leveraging four different large language models (LLMs).
   
@@ -8,19 +8,19 @@
 
 ## Datasets
 
-The Datasets folder contains subsets of all datasets, ​​as​​ the original datasets are too large. These subsets consist of randomly selected and combined samples from:
+The Datasets folder contains representative subsets of all datasets used in this study, as the original datasets are too large to be fully released. These subsets are randomly selected and curated to ensure coverage of key experimental scenarios. The folder is organized into the following subdirectories:
 
-- The training and testing sets for training the CNN-based Classification Model
-- The LeASR real-world dataset
-- Controlled Experiments datasets
-- Ablation Study datasets
-- Attack Robustness datasets
-- User Diversity Study datasets
-- Multilingual Robustness datasets
-- EchoLLM vs. Other Eavesdropping Attacks datasets
-- Bone Conduction vs. Other Headphones datasets
-- Inferring Numerical Data datasets
-- Inferring Sensitive Information datasets
+- *CNN_TrainTest*: Training and testing data for the CNN-based classification model.
+- *LeASR_RealWorld*: Real-world data collected for the LeASR module.
+- *Controlled_Experiments*: Data used in controlled environment experiments.
+- *Ablation_Study*: Datasets used in ablation studies.
+- *Attack_Robustness*: Samples for evaluating robustness under varying attack conditions.
+- *User_Diversity*: Data collected from users with diverse demographic and behavioral profiles.
+- *Multilingual*: Audio data in multiple languages to test multilingual inference robustness.
+- *EchoLLM_Comparison*: Evaluation data for comparing EchoLLM with other acoustic eavesdropping methods.
+- *Headphone_Comparison*: Datasets for comparing bone conduction headphones with other types.
+- *Numerical_Inference*: Audio clips designed for inferring numerical data such as phone numbers or passcodes.
+- *Sensitive_Info*: Samples used for inferring sensitive personal or contextual information.
 
 ---
 
