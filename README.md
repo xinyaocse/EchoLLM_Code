@@ -89,13 +89,13 @@ The *LeASR* directory is organized into four main folders:
       - *train_SpeechT5.py & eval_SpeechT5.py*: Training and evaluation of the SpeechT5 model.
 - *LLM_models*: Provides four large language models (LLMs).
 - *Data_loading*: Contains scripts managing data loading for LeASR by referencing external dataset configurations from the separate Datasets directory.
-    - Training datasets loaders:
+    - Training dataset loaders:
         - *libri_pre_16k_noised_Synthetic.py*: Loads synthetic English datasets.
         - *libri_pre_16k_noised_Real.py*: Loads real-world English datasets.
         - *libri_pre_16k_noised_CN.py*: Loads Chinese datasets.
         - *libri_pre_16k_noised_FR.py*: Loads French datasets.
         - *libri_pre_16k_noised_JP.py*: Loads Japanese datasets.
-    - Testing datasets loader:
+    - Experimental evaluation dataset loaders:
         - *exp_config.py*: Specifies the dataset paths and configurations for various experimental scenarios, including controlled experiments, robustness evaluations, ablation studies, multilingual testing, and sensitive information inference.
         - *libri_pre_16k_noised_eval_Exp_data.py*: Implements the data loading logic for experimental evaluations by calling and parsing the corresponding dataset configurations defined in *exp_config.py*.
 - *Metrics*: Provides scripts for evaluating LeASR system performance.
