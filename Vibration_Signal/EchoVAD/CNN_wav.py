@@ -7,7 +7,7 @@ from torchvision.datasets import ImageFolder
 from torch.utils.data import DataLoader, random_split
 from tqdm import tqdm
 
-data_dir = '../data'
+data_dir = 'EchoLLM\Datasets\CNN_TrainTest'
 batch_size = 64
 img_size = (128, 128)
 
@@ -51,7 +51,7 @@ class SpeechCNN(nn.Module):
         x = torch.sigmoid(self.fc2(x))
         return x
 
-model_path = 'speech_detection_cnn1.pth'
+model_path = 'speech_detection_cnn.pth'
 model = SpeechCNN().to(device)
 # model.load_state_dict(torch.load(model_path, map_location=device))
 criterion = nn.BCELoss()
