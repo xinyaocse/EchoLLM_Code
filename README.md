@@ -1,7 +1,6 @@
 # EchoLLM: LLM-Augmented Acoustic Eavesdropping Attack on Bone Conduction Headphones with mmWave Radar
 
-- The code for 8kHz vibration signal extraction and signal enhancement based on IWR1443+DCA1000EVM platform is available in the *Vibration_Signal* directory.
-- The *CNN-based_Classification_Model* directory contains a method for estimating audio delay using a convolutional neural network.
+- The code for 8kHz vibration signal extraction, audio delay estimation and signal enhancement based on IWR1443+DCA1000EVM platform is available in the *Vibration_Signal* directory.
 - The *LeASR* directory includes the implementation for context-aware inference of audio content leveraging four different large language models (LLMs).
 
 ---
@@ -30,39 +29,34 @@ The *Verification_script* folder provides a method to verify the successful conf
 The *Measurement_script* folder contains five files. Among them, *a​​dc_dataCaptureTest_audio.lua​​* serves as the radar configuration file. The remaining four scripts are used for the following purposes:
 
 - *adc_dataCapture_model.mlx*: Synchronizes mmWave data acquisition with batch audio playback via bone conduction headphones.
-- *muti_loc_exp_test_mti_beamform.mlx*: Implements signal-to-noise (SNR)-based optimal range bin selection.
-- *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm to suppress noise and enhance signal clarity.
+- *muti_loc_exp_test_mti_beamform.mlx*: Implements signal-to-noise (SNR)-based optimal range bin selection. (Corresponding to 4.2.2 Victim v.s. Headphone)
+- *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm to suppress noise and enhance signal clarity. (Corresponding to 4.3.1 Background Reflection Reduction)
 - *final_data_process_923.mlx*: provides a complete processing pipeline, including:
-    - Identifying the target range bin
-    - Extracting phase variation signals
-    - Eliminating background noise and head motion artifacts
-    - Exporting the processed signal as a .wav files
+    - Identifying the target range bin. (Corresponding to 4.2.1 Victim vs. Other Objects)
+    - Extracting phase variation signals. (Corresponding to 4.2.3 Headphone Phase Estimation)
+    - Eliminating background noise and head motion artifacts. (Corresponding to 4.3.2 Motion Calibration)
+    - Exporting the processed signal as a .wav files.
 
 Note: When dealing with unknown-length audio recordings (i.e., outside of the training or testing phases), it is recommended to configure a high radar frame rate in the profile and apply the CNN-based method introduced in the paper to detect the actual voice segments.
 
----
 
-## CNN-based Classification Model
+### CNN-based Classification Model
 
-### CNN_wav.py
+- *CNN_wav.py*: Trains a convolutional neural network (CNN) to detect the presence of voice in audio signals. Specifically, 10,000 spectrogram images are manually labeled and used as the training dataset to enable voice activity classification. 
+- *Speech_time_marker.py*: Takes a .wav file as input and segments it using a 50*ms* window size with a 10*ms* sliding step. It outputs the estimated start and end times of detected speech segments. (Corresponding to 4.2.3 Headphone Phase Estimation)
 
-The *CNN_wav.py* script trains a convolutional neural network (CNN) to detect the presence of voice in audio signals. Specifically, 10,000 spectrogram images are manually labeled and used as the training dataset to enable voice activity classification.
-
-### Speech_time_marker.py
-
-The *Speech_time_marker.py* script takes a .wav file as input and segments it using a 50*ms* window size with a 10*ms* sliding step. It outputs the estimated start and end times of detected speech segments.
 
 ---
-## How to use the LeASR
+## LeASR
 
 ### Demo
 
 If you simply want to try out LeASR, a lightweight automatic speech recognition (ASR) demo is provided in the **Demo** folder. To run the demo, you only need to prepare an audio file and a fine-tuned model. For converience, contextual audio segments can be concatenated into a single input to streamline the recognition process.
 
-### LeASR
+### detail of LeASR
 
 #### Scripts for LeASR fine-tuning, training, and evaluation
-- creat_model: Selects the specified model name (e.g., HuBART, HuBART-L, Whisper, SpeechT5) and generates the corresponding pre-trained model at the designated file path.
+- creat_model: Modifies the specified model name (e.g., HuBART, HuBART-L, Whisper, SpeechT5) and generates the corresponding pre-trained model at the designated file path.
 - dataset: Contains scripts for dataset configure. During training and testing, the data loading logic for different datasets can be modified via this code. Users need to adjust paths and related metadata according to their local dataset setup.
 - metrics: Provides code for computing the Word Error Rate (WER). Specifically, *wer.py* is used during training, while *Cal_exp_wer.py* is used to compute the evaluation-phase metric WER_B.
 - others: Includes training and testing scripts for various encoder-decoder configurations. Multiple similar versions of the same model may exist to accommodate different dataset formats and experimental settings. Users should ensure they select the appropriate version that matches their dataset format.
