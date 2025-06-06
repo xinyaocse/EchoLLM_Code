@@ -69,10 +69,33 @@ Note: When processing audio recordings of unknown length (i.e., recordings outsi
 
 If you simply want to try LeASR, a lightweight automatic speech recognition (ASR) demo is provided in the *Demo* folder. To run the demo, you need only an audio file and a fine-tuned model. For convenience, contextual audio segments can be concatenated into a single input to streamline the recognition process.
 
-### LeASR Detailed Description
+### LeASR Directory Structure
+
+The LeASR directory is organized into four distinct folders:
+
+1. *Model_loading*:
+   - *model_create.py*: Generates and saves pre-trained models (e.g., HuBART and HuBART-L) at user-defined locations.
+   - Training and evaluation scripts:
+      - Include various scripts tailored to different model architectures, data formats, and experimental setups.
+      - Users should select and configure these scripts according to their specific experimental requirements.
+2. *LLM_models*: This folder provides implementations and configurations for leveraging four large language models (LLMs) to achieve context-aware inference:
+3. *Data_loading*: Contains scripts that manage data loading and preprocessing logic for LeASR.
+   - These scripts reference external dataset configurations located in the separate *Datasets* directory, without directly storing actual datasets.
+   - Includes data loading templates:
+       - *libri_pre_16k_noised_Synthetic.py*: Synthetic English datasets.
+       - *libri_pre_16k_noised_Real.py*: Real-world English datasets.
+       - *libri_pre_16k_noised_CN.py*: Chinese datasets.
+       - *libri_pre_16k_noised_FR.py*: French datasets.
+       - *libri_pre_16k_noised_JP.py*: Japanese datasets.
+       - *libri_pre_16k_noised_eval_Exp_data.py*: Experimental datasets configured via exp_config.py.
+    - *exp_config.py*: Centrally manages data loading configurations across various experimental scenarios, including controlled experiments, robustness tests, ablation studies, multilingual evaluations, and sensitive information inference.
+5. *Metrics*: Provides scripts for evaluating LeASR system performance. Specifically, *wer.py* is used during training, while *Cal_exp_wer.py* is used to compute the evaluation-phase metric WER_B.
+   
+
+
 
 #### Scripts for LeASR fine-tuning, training, and evaluation
-- creat_model: Modifies the specified model name (e.g., HuBART, HuBART-L, Whisper, SpeechT5) and generates the corresponding pre-trained model at the designated file path.
+- creat_model: Modifies the specified model name (e.g., HuBART and HuBART-L, Whisper, SpeechT5) and generates the corresponding pre-trained model at the designated file path.
 - dataset: Contains scripts for dataset configure. During training and testing, the data loading logic for different datasets can be modified via this code. Users need to adjust paths and related metadata according to their local dataset setup.
 - metrics: Provides code for computing the Word Error Rate (WER). Specifically, *wer.py* is used during training, while *Cal_exp_wer.py* is used to compute the evaluation-phase metric WER_B.
 - others: Includes training and testing scripts for various encoder-decoder configurations. Multiple similar versions of the same model may exist to accommodate different dataset formats and experimental settings. Users should ensure they select the appropriate version that matches their dataset format.
@@ -128,25 +151,5 @@ If you simply want to try LeASR, a lightweight automatic speech recognition (ASR
 --do_eval=true
 --do_lower_case=true
 ```
-
-### Data loading
-
-- *dataset/libri_pre_16k_noised_dialog_.py*: Provides loading of complete datasets (training sets, testing sets, and validation sets) for specific languages, ​​supporting training and evaluation for different models:
-  - *dataset/libri_pre_16k_noised_Synthetic.py*: Loading English synthetic datasets.
-  - *dataset/libri_pre_16k_noised_Real.py*: Loading English real datasets.
-  - *dataset/libri_pre_16k_noised_CN.py*: Loading Chinese datasets.
-  - *dataset/libri_pre_16k_noised_FR.py*: Loading French datasets.
-  - *dataset/libri_pre_16k_noised_JP.py*: Loading Japanese datasets.
-  - *dataset/libri_pre_16k_noised_eval_Exp_data.py*: Call *exp_config.py*.
-- *dataset/exp_config.py*: The code controls data loading for all experimental including:
-  - Controlled Experiments datasets loading.
-  - Ablation Study datasets loading.
-  - Attack Robustness datasets loading.
-  - User Diversity Study datasets loading.
-  - Multilingual Robustness datasets loading.
-  - EchoLLM vs. Other Eavesdropping Attacks datasets loading.
-  - Bone Conduction vs. Other Headphones datasets loading.
-  - Inferring Numerical Data datasets loading.
-  - Inferring Sensitive Information datasets loading.
 
 
