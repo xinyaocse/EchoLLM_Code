@@ -31,32 +31,40 @@ class ExpConfig:
 
 
 exp_controlled_experiments_config = ExpConfig({"Volume": ['50', '60', '70', '80', '90', '100'], "Angle": ["15", '30', '45', '60', '75'],
-                           "Headphone": ["SZ-ORP", "SZ-OM", "NK-RP4"], "Distance": ['40', '60', '80', '100', '120'],
+                           "Distance": ['40', '60', '80', '100', '120'],
                            "Motion": ['static', "FB", "LR", "UD"]},
                             "/root/public/dev8T/username/ASR/exp/exp_controlled_result.json",
                             "/root/public/dev8T/username/ASR/exp/exp_controlled_dataset/",
                             "/root/public/dev8T/username/ASR/exp/exp_controlled_eval.json")
 exp_controlled_experiments_config.set_path_dict({"Volume": r"/root/public/dev8T/username/ASR/exp/exp_controlled/Volume/",
                              "Angle": r"/root/public/dev8T/username/ASR/exp/exp_controlled/Angle/",
-                             "Headphone": "/root/public/dev8T/username/ASR/exp/exp_controlled/Headphone/",
                              "Distance": r"/root/public/dev8T/username/ASR/exp/exp_controlled/Distance/",
                              "Motion": r"/root/public/dev8T/username/ASR/exp/exp_controlled/Motion/"})
 
 exp_ablation_config = ExpConfig({
-    "Ablation": ['Normal', 'w/o-BRE', 'w/o-MC', 'w/o-AE']},
+    "Ablation": ['Normal', 'w/o-BRE', 'w/o-MC', 'w/o-AE'],
+    "Context": ['Caller-Callee', 'Callee-Caller', 'w/o-Caller']},
     "/root/public/dev8T/username/ASR/exp/exp_ablation_result.json",
     "/root/public/dev8T/username/ASR/exp/exp_ablation_dataset/",
     "/root/public/dev8T/username/ASR/exp/exp_ablation_eval.json")
 exp_ablation_config.set_path_dict({
-    "Ablation": "/root/public/dev8T/username/ASR/exp/exp_ablation/Ablationt/"})
+    "Ablation": "/root/public/dev8T/username/ASR/exp/exp_ablation/Ablationt/",
+    "Context": "/root/public/dev8T/username/ASR/exp/exp_context/Context/"})
 
-exp_digit_config = ExpConfig({
-    "Digit": ['digit']},
-    "/root/public/dev8T/username/ASR/exp/exp_digit_result.json",
-    "/root/public/dev8T/username/ASR/exp/exp_digit_dataset/",
-    "/root/public/dev8T/username/ASR/exp/digit_exp/exp_digit_eval.json")
-exp_digit_config.set_path_dict({
-    "Digit": "/root/public/dev8T/username/ASR/exp/exp_digit/Digit/"})
+exp_robustness_config = ExpConfig({
+    "Noise": ['30', '40', '50', '60', '70'],
+    "Env": ['UE', 'CS', 'OZ', 'SA'],
+    "Headphone": ["SZ-ORP", "SZ-OM", "NK-RP4"]},
+    "/root/public/dev8T/username/ASR/exp/exp_robustness_result.json",
+    "/root/public/dev8T/username/ASR/exp/exp_robustness_dataset/",
+    "/root/public/dev8T/username/ASR/exp/exp_robustness_eval.json")
+exp_robustness_config.set_path_dict({
+    "Noise": "/root/public/dev8T/username/ASR/exp/exp_diff_noise/Noise/",
+    "Env": "/root/public/dev8T/username/ASR/exp/exp_diff_env/Env/",
+    "Headphone": "/root/public/dev8T/username/ASR/exp/exp_controlled/Headphone/",
+    })
+
+
 
 exp_user_diversity_config = ExpConfig({
     "Human": ['Slow_F_Y', 'Moderate_F_Y', 'Fast_F_Y', 'Slow_M_Y', 'Moderate_M_Y', 'Fast_M_Y', 'Slow_F_M', 'Moderate_F_M', 'Fast_F_M', 'Slow_M_M', 'Moderate_M_M', 'Fast_M_M', 'Slow_F_O', 'Moderate_F_O', 'Fast_F_O', 'Slow_M_O', 'Moderate_M_O', 'Fast_M_O']},
@@ -66,27 +74,32 @@ exp_user_diversity_config = ExpConfig({
 exp_user_diversity_config.set_path_dict({
     "Human": "/root/public/dev8T/username/ASR/exp/exp_user_diversity/Human/"})
 
-exp_diff_env_config = ExpConfig({
-    "Env": ['UE', 'CS', 'OZ', 'SA']},
-    "/root/public/dev8T/username/ASR/exp/exp_diff_env_result.json",
-    "/root/public/dev8T/username/ASR/exp/exp_diff_env_dataset/",
-    "/root/public/dev8T/username/ASR/exp/exp_diff_env_eval.json")
-exp_diff_env_config.set_path_dict({
-    "Human": "/root/public/dev8T/username/ASR/exp/exp_diff_env/Env/"})
-
-exp_diff_noise_config = ExpConfig({
-    "Noise": ['30', '40', '50', '60', '70']},
-    "/root/public/dev8T/username/ASR/exp/exp_diff_noise_result.json",
-    "/root/public/dev8T/username/ASR/exp/exp_diff_noise_pre_dataset/",
-    "/root/public/dev8T/username/ASR/exp/exp_diff_noise_eval.json")
-exp_diff_noise_config.set_path_dict({
-    "Noise": "/root/public/dev8T/username/ASR/exp/exp_diff_noise/Noise/"})
-
 exp_phone_config = ExpConfig({"Distance": ['50', '100', '150', '200']},
-                             "/root/public/dev8T/username/ASR/exp/exp_phone_Distance.json",
-                             "/root/public/dev8T/username/ASR/exp/exp_phone_pre_dataset/")
+                             "/root/public/dev8T/username/ASR/exp/exp_phone.json",
+                             "/root/public/dev8T/username/ASR/exp/exp_phone_dataset/",
+                             "/root/public/dev8T/username/ASR/exp/exp_phone_eval.json")
 exp_phone_config.set_path_dict({"Distance": r"/root/public/dev8T/username/ASR/exp/exp_phone/Distance/"})
 
+exp_headphones_config = ExpConfig({"Headphones": ['BCH', 'In-ear', 'Over-ear']},
+                             "/root/public/dev8T/username/ASR/exp/exp_headphones.json",
+                             "/root/public/dev8T/username/ASR/exp/exp_headphones_dataset/")
+exp_headphones_config.set_path_dict({"Headphones": r"/root/public/dev8T/username/ASR/exp/exp_headphones/Headphones/"})
+
+exp_digit_config = ExpConfig({
+    "Digit": ['digit']},
+    "/root/public/dev8T/username/ASR/exp/exp_digit_result.json",
+    "/root/public/dev8T/username/ASR/exp/exp_digit_dataset/",
+    "/root/public/dev8T/username/ASR/exp/digit_exp/exp_digit_eval.json")
+exp_digit_config.set_path_dict({
+    "Digit": "/root/public/dev8T/username/ASR/exp/exp_digit/Digit/"})
+
+exp_sensitive_config = ExpConfig({
+    "Sensitive": ['digit']},
+    "/root/public/dev8T/username/ASR/exp/exp_sensitive_result.json",
+    "/root/public/dev8T/username/ASR/exp/exp_sensitive_dataset/",
+    "/root/public/dev8T/username/ASR/exp/digit_exp/exp_sensitive_eval.json")
+exp_sensitive_config.set_path_dict({
+    "Sensitive": "/root/public/dev8T/username/ASR/exp/exp_sensitive/Sensitive/"})
 
 class ConfigAdapter:
     def __init__(self):
