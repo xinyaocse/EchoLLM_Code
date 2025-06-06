@@ -10,19 +10,21 @@ This repository contains the implementation of EchoLLM, including vibration sign
 
 ## Datasets
 
-The *Datasets* folder includes curated subsets of the full datasets used in our experiments, as the complete datasets are too large to be fully released. These subsets are randomly sampled to preserve the diversity of experimental conditions. Subdirectories include:
+The *Datasets* folder includes curated subsets of the full datasets used in our experiments, as the complete datasets are too large to be fully released. These subsets are randomly sampled to preserve the diversity of experimental conditions. The folder is organized into two subdirectories:
 
-- *CNN_TrainTest*: Training and testing sets for the CNN-based voice activity detector.
-- *LeASR_RealWorld*: Real-world data collected for the LeASR module.
-- *Controlled_Experiments*: Datasets used in controlled environment experiments.
-- *Ablation_Study*: Datasets used in ablation studies.
-- *Attack_Robustness*: Samples to evaluate robustness under varying attack conditions.
-- *User_Diversity*: Data collected from users with diverse demographic and behavioral profiles.
-- *Multilingual*: Audio data in multiple languages for multilingual inference robustness.
-- *EchoLLM_Comparison*: Evaluation data for comparing EchoLLM against baseline acoustic eavesdropping attacks.
-- *Headphone_Comparison*: Datasets for comparing bone conduction headphones with other headphone types.
-- *Numerical_Inference*: Audio segments designed for inferring numerical data such as phone numbers or passcodes.
-- *Sensitive_Info*: Audio segments used for inferring sensitive personal or contextual information.
+- TrainSet: Contains training data for the CNN-based voice activity detector.
+  - *CNN_TrainTest*: Training and testing sets for the CNN-based voice activity detector.
+- TestSet: Contains evaluation datasets used in the various experimental settings described in the paper. These include:
+  - *LeASR_RealWorld*: Real-world data collected for the LeASR module.
+  - *Controlled_Experiments*: Datasets used in controlled environment experiments.
+  - *Ablation_Study*: Datasets used in ablation studies.
+  - *Attack_Robustness*: Samples to evaluate robustness under varying attack conditions.
+  - *User_Diversity*: Data collected from users with diverse demographic and behavioral profiles.
+  - *Multilingual*: Audio data in multiple languages for multilingual inference robustness.
+  - *EchoLLM_Comparison*: Evaluation data for comparing EchoLLM against baseline acoustic eavesdropping attacks.
+  - *Headphone_Comparison*: Datasets for comparing bone conduction headphones with other headphone types.
+  - *Numerical_Inference*: Audio segments designed for inferring numerical data such as phone numbers or passcodes.
+  - *Sensitive_Info*: Audio segments used for inferring sensitive personal or contextual information.
 
 ---
 
@@ -88,7 +90,7 @@ The *LeASR* directory is organized into four main folders:
       ```
       - *train_SpeechT5.py & eval_SpeechT5.py*: Training and evaluation of the SpeechT5 model.
 - *LLM_models*: Provides four large language models (LLMs).
-- *Data_loading*: Contains scripts managing data loading for LeASR by referencing external dataset configurations from the separate Datasets directory.
+- *Data_loading*: Contains scripts managing data loading for LeASR by referencing external dataset configurations from the separate *Datasets/TrainSet* directory.
     - Training dataset loaders:
         - *libri_pre_16k_noised_Synthetic.py*: Loads synthetic English datasets.
         - *libri_pre_16k_noised_Real.py*: Loads real-world English datasets.
