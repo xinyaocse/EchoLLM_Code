@@ -73,7 +73,7 @@ If you simply want to try LeASR, a lightweight automatic speech recognition (ASR
 
 The LeASR directory is organized into four distinct folders:
 - *Model_loading*:
-   - *model_create.py*: Generates and saves pre-trained models (e.g., HuBART and HuBART-L) at user-defined locations.
+   - *model_create.py*: Generates and saves pre-trained models (e.g., HuBART, HuBART-L, Whisper, SpeechT5) at user-defined locations.
    - Training and evaluation scripts:
       - Include various scripts tailored to different model architectures, data formats, and experimental setups.
       - Users should select and configure these scripts according to their specific experimental requirements.
