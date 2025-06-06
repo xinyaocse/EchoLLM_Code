@@ -24,7 +24,7 @@ The Datasets folder contains representative subsets of all datasets used in this
 
 ---
 
-## Vibration Signal Extraction & Vibration Signal Enhancement
+## Vibration_Signal: Vibration Signal Extraction & Vibration Signal Enhancement
 
 The millimeter-wave radar system (IWR1443+DCA1000EVM) is configured and connected in accordance with TI's official guidelines. The provided code is designed to run in an environment equipped with mmWave-Studio 2.1.1 and MATLAB Runtime Engine v8.5.1. This documentation details the procedures for extracting and enhancing vibration signals using mmWave radar, utilizing the specified hardware and software tools to enable accurate data acquisition and signal analysis.
 
