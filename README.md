@@ -91,7 +91,7 @@ If you simply want to try out LeASR, a lightweight automatic speech recognition 
         "audio_pre": "04968-06_Raw_0.wav",
         "audio_after": "04968-07_Raw_0.wav",
         "id": "04968-07",
-        "delay_time": "0.3647305929570286",
+        "delay_time": "0.36",
         "transcript": "Did anyone get hurt? Two people were injured."
         ...(Experiment-specific data)
     },...]
@@ -102,7 +102,7 @@ If you simply want to try out LeASR, a lightweight automatic speech recognition 
 --dataset_name="librispeech_asr"
 --model_name_or_path="/root/public/....(your path)"
 --dataset_config_name="clean"
---train_split_name="train.100"
+--train_split_name="train"
 --eval_split_name="validation"
 --output_dir="/root/public/....(your path)"
 --preprocessing_num_workers="16"
@@ -132,36 +132,24 @@ If you simply want to try out LeASR, a lightweight automatic speech recognition 
 --do_lower_case=true
 ```
 
-### Notes
+### Data loading
 
-- For more information on how the dataset is loaded, refer to the beginning of the *libri_pre_16k_noised_dialog_.py* file and the *exp_config.py* file in the *dataset* folder.
-  
-    - The former defines the data loading process used for training, evaluation, and testing across the full language dataset.
-    - The latter provides configuration settings for ablation experiments.
-    
-```python
-# Dataset path configuration in libri_pre_16k_noised_dialog_JP.py
-META_DATA_TRAIN_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_train.json'
-META_DATA_TEST_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_test_JP_test.json'
-META_DATA_VAL_PATH = r'/root/public/dev8T/username/dataset_text_audio/ASR_eval_JP_eval.json'
-```
-For different data loading scenarios, the data loading logic in the evaluation script may need to be modified accordingly.
+- *dataset/libri_pre_16k_noised_dialog_.py*: Provides loading of complete datasets (training sets, testing sets, and validation sets) for specific languages, ​​supporting training and evaluation for different models:
+  - *dataset/libri_pre_16k_noised_Synthetic.py*: Loading English synthetic datasets.
+  - *dataset/libri_pre_16k_noised_Real.py*: Loading English real datasets.
+  - *dataset/libri_pre_16k_noised_CN.py*: Loading Chinese datasets.
+  - *dataset/libri_pre_16k_noised_FR.py*: Loading French datasets.
+  - *dataset/libri_pre_16k_noised_JP.py*: Loading Japanese datasets.
+  - *dataset/libri_pre_16k_noised_eval_Exp_data.py*: Call *exp_config.py*.
+- *dataset/exp_config.py*: The code controls data loading for all experimental including:
+  - Controlled Experiments datasets loading.
+  - Ablation Study datasets loading.
+  - Attack Robustness datasets loading.
+  - User Diversity Study datasets loading.
+  - Multilingual Robustness datasets loading.
+  - EchoLLM vs. Other Eavesdropping Attacks datasets loading.
+  - Bone Conduction vs. Other Headphones datasets loading.
+  - Inferring Numerical Data datasets loading.
+  - Inferring Sensitive Information datasets loading.
 
-```python
-# Data loading under different volumes, angles and motions in exp_config.py
-exp_v6_config = ExpConfig({"Volume": ['50', '60', '70', '80', '90', '100'], "Angle": ["15", '30', '45', '60', '75'],
-                           "Headphone": ["type2"], "distance_v80": ['40', '60', '80', '100'],
-                           "Motion": ['static', "FB", "LR", "UD"]},
-                          "/root/public/dev8T/username/ASR/exp/exp_v6_result.json",
-                          "/root/public/dev8T/username/ASR/exp/exp_v6_pre_dataset/")
-exp_v6_config.set_path_dict({"Volume": r"/root/public/dev8T/username/ASR/exp/exp_v6/volume/",
-                             "Angle": r"/root/public/dev8T/username/ASR/exp/exp_v6/Angle/",
-                             "Headphone": "/root/public/dev8T/username/ASR/exp/exp_v6/headphone/",
-                             "Distance_v80": r"/root/public/dev8T/username/ASR/exp/exp_v6/distance_v80/",
-                             "Motion": r"/root/public/dev8T/username/ASR/exp/exp_v6/Motion/"})
-...
-config_adapter = ConfigAdapter()
-config_adapter.set_config(exp_v6_config)
-```
 
-- The required code environment is specified in *LeASR/LeASR/requirements.txt*.
