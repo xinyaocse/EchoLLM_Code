@@ -50,7 +50,7 @@ The *Measurement_script* folder contains five files. Among them, *a​​dc_data
 - *adc_dataCapture_model.mlx*: Synchronizes mmWave data acquisition with batch audio playback via bone conduction headphones.
 - *muti_loc_exp_test_mti_beamform.mlx*: Implements signal-to-noise (SNR)-based optimal range bin selection. (Corresponding to 4.2.2 Victim v.s. Headphone)
 - *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm to suppress noise and enhance signal clarity. (Corresponding to 4.3.1 Background Reflection Reduction)
-- *final_data_process_923.mlx*: provides a complete processing pipeline, including:
+- *final_data_process.mlx*: provides a complete processing pipeline, including:
     - Identifying the target range bin. (Corresponding to 4.2.1 Victim vs. Other Objects)
     - Extracting phase variation signals. (Corresponding to 4.2.3 Headphone Phase Estimation)
     - Eliminating background noise and head motion artifacts. (Corresponding to 4.3.2 Motion Calibration)
