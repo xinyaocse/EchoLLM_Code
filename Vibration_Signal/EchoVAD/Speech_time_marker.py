@@ -9,7 +9,7 @@ import io
 import librosa.display
 
 # Load audio file
-audio_path = r'.\test.wav'
+audio_path = r'test.wav'
 y, sr = librosa.load(audio_path, sr=None)
 
 # Parameters
