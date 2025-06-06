@@ -1,7 +1,7 @@
 # EchoLLM: LLM-Augmented Acoustic Eavesdropping Attack on Bone Conduction Headphones with mmWave Radar
 
 - The *Datasets* folder includes representative subsets of all datasets used in the experiments.
-- The *Vibration_Signal* directory contains the implementation of 8kHz vibration signal extraction, audio delay estimation, and signal enhancement using the IWR1443+DCA1000EVM mmWave radar platform.
+- The *Vibration_Signal* directory contains the implementation of 8kHz vibration signal extraction and signal enhancement using the IWR1443+DCA1000EVM mmWave radar platform.
 - The *LeASR* directory provides context-aware inference modules for audio content, leveraging four different large language models (LLMs).
   
 ---
