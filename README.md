@@ -96,8 +96,8 @@ The *LeASR* directory is organized into four main folders:
         - *libri_pre_16k_noised_FR.py*: Loads French datasets.
         - *libri_pre_16k_noised_JP.py*: Loads Japanese datasets.
     - Testing datasets loader:
-        - *exp_config.py*: Centrally manages data loading configurations across various experimental scenarios, including controlled experiments, robustness tests, ablation studies, multilingual evaluations, and sensitive information inference.
-        - *libri_pre_16k_noised_eval_Exp_data.py*: Loads data for experimental evaluation, referencing configuration details in *exp_config.py*.
+        - *exp_config.py*: Specifies the dataset paths and configurations for various experimental scenarios, including controlled experiments, robustness evaluations, ablation studies, multilingual testing, and sensitive information inference.
+        - *libri_pre_16k_noised_eval_Exp_data.py*: Implements the data loading logic for experimental evaluations by calling and parsing the corresponding dataset configurations defined in *exp_config.py*.
 - *Metrics*: Provides scripts for evaluating LeASR system performance.
     - *wer.py*: Computes the Word Error Rate (WER) metric during training.
     - *Cal_exp_wer.py*: Computes the specialized WER_B metric for detailed evaluation during experimental analyses.
