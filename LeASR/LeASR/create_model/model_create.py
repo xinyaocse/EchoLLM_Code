@@ -23,7 +23,7 @@ if __name__ == '__main__':
         processor.save_pretrained("./dataset_text_audio/pretrained_models/models/mode_hu-bart/")
     
     elif create_name is "HuBART-L":
-                encoder_id = "./dataset_text_audio/pretrained_models/models/hubert-base-ls960/"
+        encoder_id = "./dataset_text_audio/pretrained_models/models/hubert-base-ls960/"
         decoder_id = "./dataset_text_audio/pretrained_models/models/bart-large/"
 
         # load and save speech-encoder-decoder model
