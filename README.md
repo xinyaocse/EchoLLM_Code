@@ -26,37 +26,35 @@ The Datasets folder contains representative subsets of all datasets used in this
 
 ## Vibration_Signal: Vibration Signal Extraction & Vibration Signal Enhancement
 
-The millimeter-wave radar system (IWR1443+DCA1000EVM) is configured and connected in accordance with TI's official guidelines. The provided code is designed to run in an environment equipped with mmWave-Studio 2.1.1 and MATLAB Runtime Engine v8.5.1. This documentation details the procedures for extracting and enhancing vibration signals using mmWave radar, utilizing the specified hardware and software tools to enable accurate data acquisition and signal analysis.
+The millimeter-wave radar system (IWR1443+DCA1000EVM) is configured and connected according to Texas Instruments' official guidelines. The provided code is designed to run in an environment equipped with mmWave-Studio 2.1.1 and MATLAB Runtime Engine v8.5.1. This documentation details the extraction and enhancement of vibration signals via mmWave radar to ensure accurate data acquisition and signal analysis through coordinated hardware and software tools.
 
 ### Initialization
 
-The *Initialization_script* folder contains the necessary ​​Lua script​ and ​​initialization file required​​ for establishing a connection with mmWave Studio. To proceed:
+The *Initialization_script* folder contains the necessary ​​Lua script​ and ​​initialization files​​ for establishing connection with mmWave Studio. To perform initialization:
 
-- ​​Launch mmWave Studio​​ and select the correct ​​serial port​​.
-- Run the initialization script until ​​"SUCCESS"​​ is displayed.
+- ​​Launch mmWave Studio​​ and select the appropriate ​​serial port​​.
+- Execute the initialization script until a ​​"SUCCESS" message​​ is displayed.
 
-​Note:​​ Ensure that the path to the radar configuration file is correctly specified in the script.
-
-You can ​​customize the Lua script​​ to modify radar configuration parameters according to your specific requirements.
+​Note:​​ Ensure the radar configuration file path is correctly set within the script, and customize the provided Lua script as needed to adjust radar parameters according to your specific requirements.
 
 ### Verification
 
-The *Verification_script* folder provides a method to verify the successful configuration and operational status of the radar. Specifically, the bone conduction headphones emit a linearly frequency-modulated signal, which is sampled and recorded by the mmWave radar using the Lua scripts in this folder.
+The *Verification_script* folder offers methods to verify correct radar configuration and operation. Specifically, bone conduction headphones emit a linearly frequency-modulated signal, which the mmWave radar samples and records using Lua scripts provided in this folder.
 
 ### Measurement
 
-The *Measurement_script* folder contains five files. Among them, *a​​dc_dataCaptureTest_audio.lua​​* serves as the radar configuration file. The remaining four scripts are used for the following purposes:
+The *Measurement_script* folder contains five scripts, with *adc_dataCaptureTest_audio.lua* serving as the main radar configuration script. The remaining four scripts have the following functionalities:
 
 - *adc_dataCapture_model.mlx*: Synchronizes mmWave data acquisition with batch audio playback via bone conduction headphones.
-- *muti_loc_exp_test_mti_beamform.mlx*: Implements signal-to-noise (SNR)-based optimal range bin selection. (Corresponding to 4.2.2 Victim v.s. Headphone)
-- *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm to suppress noise and enhance signal clarity. (Corresponding to 4.3.1 Background Reflection Reduction)
-- *final_data_process.mlx*: provides a complete processing pipeline, including:
-    - Identifying the target range bin. (Corresponding to 4.2.1 Victim vs. Other Objects)
-    - Extracting phase variation signals. (Corresponding to 4.2.3 Headphone Phase Estimation)
-    - Eliminating background noise and head motion artifacts. (Corresponding to 4.3.2 Motion Calibration)
-    - Exporting the processed signal as a .wav files.
+- *muti_loc_exp_test_mti_beamform.mlx*: Implements optimal range bin selection based on signal-to-noise ratio (SNR). (Corresponds to Section 4.2.2: Victim vs. Headphone)
+- *fmcw_process_to_audio_local_circle.mlx*: Applies a circle-fitting algorithm to suppress noise and enhance signal clarity. (Corresponds to Section 4.3.1: Background Reflection Reduction)
+- *final_data_process.mlx*: Provides a complete signal-processing pipeline, including:
+    - Identifying the target range bin. (Corresponding to Section 4.2.1: Victim vs. Other Objects).
+    - Extracting phase variation signals. (Corresponding to Section 4.2.3: Headphone Phase Estimation).
+    - Eliminating background noise and head motion artifacts. (Corresponding to Section 4.3.2: Motion Calibration).
+    - Exporting the processed signal as *.wav* files.
 
-Note: When dealing with unknown-length audio recordings (i.e., outside of the training or testing phases), it is recommended to configure a high radar frame rate in the profile and apply the CNN-based method introduced in the paper to detect the actual voice segments.
+Note: When processing audio recordings of unknown length (i.e., recordings outside training or testing scenarios), configure a high radar frame rate and apply the CNN-based voice activity detector described below to accurately identify actual voice segments.
 
 
 ### CNN-based Voice Activity Detector (EchoVAD)
