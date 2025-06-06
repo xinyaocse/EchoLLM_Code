@@ -13,7 +13,7 @@ from dataset.dataset_config import no_bof_dataset, flag_dataset, noised_b_datase
     EvalAdapter, flag_eval, ablation_eval, ablation_flag_eval
 
 dataset = EvalAdapter()
-dataset.set_datasets(ablation_flag_eval)
+dataset.set_datasets(ablation_eval)
 
 META_DATA_TRAIN_PATH = dataset.eval_dataset.val_path
 META_DATA_TEST_PATH = dataset.eval_dataset.val_path
