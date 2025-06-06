@@ -108,7 +108,6 @@ The *LeASR* directory is organized into four main folders:
     [{
         "previous_text": "Did anyone get hurt?",
         "current_text": "Two people were injured.",
-        "target_audio": "/root/public/....",
         "audio_pre": "04968-06_Raw_0.wav",
         "audio_after": "04968-07_Raw_0.wav",
         "id": "04968-07",
