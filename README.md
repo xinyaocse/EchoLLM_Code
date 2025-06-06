@@ -116,7 +116,8 @@ The *LeASR* directory is organized into four main folders, each responsible for 
     },...]
 ```
 - Second, update the paths for the pre-trained model (downloadable from Hugging Face) and the data loader script within your selected model script. Optionally, evaluation results can be exported back into a JSON file to facilitate WER_B metric computation.
-- Note: For combined models such as HuBERT+BART, training scripts are located within the *model* folder. You can configure training parameters as exemplified below:
+
+Note: For combined models such as HuBERT+BART, training scripts are located within the *model* folder. You can configure training parameters as exemplified below:
 ```python
 --dataset_name="librispeech_asr"
 --model_name_or_path="/root/public/....(your path)"
