@@ -77,7 +77,7 @@ The LeASR directory is organized into four distinct folders:
    - Training and evaluation scripts:
       - Include various scripts tailored to different model architectures, data formats, and experimental setups.
       - Users should select and configure these scripts according to their specific experimental requirements.
-- *LLM_models*: This folder provides implementations and configurations for leveraging four large language models (LLMs) to achieve context-aware inference:
+- *LLM_models*: Provides four large language models (LLMs).
 - *Data_loading*: Contains scripts managing data loading for LeASR by referencing external dataset configurations from the separate Datasets directory.
     - *libri_pre_16k_noised_Synthetic.py*: Synthetic English datasets.
     - *libri_pre_16k_noised_Real.py*: Real-world English datasets.
@@ -86,7 +86,9 @@ The LeASR directory is organized into four distinct folders:
     - *libri_pre_16k_noised_JP.py*: Japanese datasets.
     - *libri_pre_16k_noised_eval_Exp_data.py*: Experimental datasets configured via exp_config.py.
     - *exp_config.py*: Centrally manages data loading configurations across various experimental scenarios, including controlled experiments, robustness tests, ablation studies, multilingual evaluations, and sensitive information inference.
-- *Metrics*: Provides scripts for evaluating LeASR system performance. Specifically, *wer.py* is used during training, while *Cal_exp_wer.py* is used to compute the evaluation-phase metric WER_B.
+- *Metrics*: Provides scripts for evaluating LeASR system performance.
+    - *wer.py*: Computes the Word Error Rate (WER) metric during training.
+    - *Cal_exp_wer.py*: Computes the specialized WER_B metric for detailed evaluation during experimental analyses.
 
 #### Local Deployment Instructions
 - First, prepare your dataset and a corresponding JSON configuration file. Several dataset loading templates are available in the *data_loading* folder for direct use or customization. You can also implement your own data loading method if necessary. An example JSON configuration is shown below:
