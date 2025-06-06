@@ -67,9 +67,9 @@ Note: When processing audio recordings of unknown length (i.e., recordings outsi
 
 ### Demo
 
-If you simply want to try out LeASR, a lightweight automatic speech recognition (ASR) demo is provided in the **Demo** folder. To run the demo, you only need to prepare an audio file and a fine-tuned model. For converience, contextual audio segments can be concatenated into a single input to streamline the recognition process.
+If you simply want to try LeASR, a lightweight automatic speech recognition (ASR) demo is provided in the *Demo* folder. To run the demo, you need only an audio file and a fine-tuned model. For convenience, contextual audio segments can be concatenated into a single input to streamline the recognition process.
 
-### detail of LeASR
+### LeASR Detailed Description
 
 #### Scripts for LeASR fine-tuning, training, and evaluation
 - creat_model: Modifies the specified model name (e.g., HuBART, HuBART-L, Whisper, SpeechT5) and generates the corresponding pre-trained model at the designated file path.
@@ -79,7 +79,7 @@ If you simply want to try out LeASR, a lightweight automatic speech recognition 
 
 
 #### Local Deployment Instructions
-- First, prepare your dataset and the corresponding JSON configuration file. Several dataset reading templates are provided in the *dataset* folder, which you can either use directly or customize as needed. You may also implement your own data loading methods if necessary. An example JSON configuration file is shown below:
+- First, prepare your dataset and a corresponding JSON configuration file. Several dataset loading templates are available in the *data_loading* folder for direct use or customization. You can also implement your own data loading method if necessary. An example JSON configuration is shown below:
 ```json
     [{
         "previous_text": "Did anyone get hurt?",
@@ -93,8 +93,8 @@ If you simply want to try out LeASR, a lightweight automatic speech recognition 
         ...(Experiment-specific data)
     },...]
 ```
-- Second, update the path to the pre-trained model and the data loader script in the selected model. (The pre-trained model can be downloaded from Hugging Face.) Optionally, you may write the evaluation results back to a JSON file for computing the WER_B metric.
-- Note: For combined models such as HuBERT+BART, the corresponding training code is provided in the *model* folder. The following table outlines how to configure the training parameters.
+- Second, update the paths for the pre-trained model (downloadable from Hugging Face) and the data loader script within your selected model script. Optionally, evaluation results can be exported back into a JSON file to facilitate WER_B metric computation.
+- Note: For combined models such as HuBERT+BART, training scripts are located within the *model* folder. You can configure training parameters as exemplified below:
 ```python
 --dataset_name="librispeech_asr"
 --model_name_or_path="/root/public/....(your path)"
