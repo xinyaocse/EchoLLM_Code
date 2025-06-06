@@ -61,9 +61,8 @@ Note: When dealing with unknown-length audio recordings (i.e., outside of the tr
 
 ### CNN-based Voice Activity Detector (EchoVAD)
 
-- *CNN_wav.py*: Trains a convolutional neural network (CNN) to detect the presence of voice in audio signals. Specifically, 10,000 spectrogram images are manually labeled and used as the training dataset to enable voice activity classification. 
-- *Speech_time_marker.py*: Takes a .wav file as input and segments it using a 50*ms* window size with a 10*ms* sliding step. It outputs the estimated start and end times of detected speech segments. (Corresponding to 4.2.3 Headphone Phase Estimation)
-
+- *CNN_wav.py*: Implements the training pipeline for the proposed convolutional neural network (CNN)-based voice activity detector (EchoVAD). The model is trained on 10,000 manually labeled spectrogram images to distinguish between speech and non-speech segments, enabling precise detection of audio presence in bone conduction signals.
+- *Speech_time_marker.py*: Applies the trained EchoVAD model to a given *.wav* file, segmenting it with a 50 *ms* window and a 10 *ms* sliding step to identify the estimated start and end times of speech segments. This process corresponds to the Headphone Phase Estimation step described in Section 4.2.3.
 
 ---
 ## LeASR
