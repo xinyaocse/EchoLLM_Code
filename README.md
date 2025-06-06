@@ -72,14 +72,13 @@ If you simply want to try LeASR, a lightweight automatic speech recognition (ASR
 ### LeASR Directory Structure
 
 The LeASR directory is organized into four distinct folders:
-
-1. *Model_loading*:
+- *Model_loading*:
    - *model_create.py*: Generates and saves pre-trained models (e.g., HuBART and HuBART-L) at user-defined locations.
    - Training and evaluation scripts:
       - Include various scripts tailored to different model architectures, data formats, and experimental setups.
       - Users should select and configure these scripts according to their specific experimental requirements.
-2. *LLM_models*: This folder provides implementations and configurations for leveraging four large language models (LLMs) to achieve context-aware inference:
-3. *Data_loading*: Contains scripts managing data loading for LeASR by referencing external dataset configurations from the separate Datasets directory.
+- *LLM_models*: This folder provides implementations and configurations for leveraging four large language models (LLMs) to achieve context-aware inference:
+- *Data_loading*: Contains scripts managing data loading for LeASR by referencing external dataset configurations from the separate Datasets directory.
     - *libri_pre_16k_noised_Synthetic.py*: Synthetic English datasets.
     - *libri_pre_16k_noised_Real.py*: Real-world English datasets.
     - *libri_pre_16k_noised_CN.py*: Chinese datasets.
@@ -87,17 +86,7 @@ The LeASR directory is organized into four distinct folders:
     - *libri_pre_16k_noised_JP.py*: Japanese datasets.
     - *libri_pre_16k_noised_eval_Exp_data.py*: Experimental datasets configured via exp_config.py.
     - *exp_config.py*: Centrally manages data loading configurations across various experimental scenarios, including controlled experiments, robustness tests, ablation studies, multilingual evaluations, and sensitive information inference.
-5. *Metrics*: Provides scripts for evaluating LeASR system performance. Specifically, *wer.py* is used during training, while *Cal_exp_wer.py* is used to compute the evaluation-phase metric WER_B.
-   
-
-
-
-#### Scripts for LeASR fine-tuning, training, and evaluation
-- creat_model: Modifies the specified model name (e.g., HuBART and HuBART-L, Whisper, SpeechT5) and generates the corresponding pre-trained model at the designated file path.
-- dataset: Contains scripts for dataset configure. During training and testing, the data loading logic for different datasets can be modified via this code. Users need to adjust paths and related metadata according to their local dataset setup.
-- metrics: Provides code for computing the Word Error Rate (WER). Specifically, *wer.py* is used during training, while *Cal_exp_wer.py* is used to compute the evaluation-phase metric WER_B.
-- others: Includes training and testing scripts for various encoder-decoder configurations. Multiple similar versions of the same model may exist to accommodate different dataset formats and experimental settings. Users should ensure they select the appropriate version that matches their dataset format.
-
+- *Metrics*: Provides scripts for evaluating LeASR system performance. Specifically, *wer.py* is used during training, while *Cal_exp_wer.py* is used to compute the evaluation-phase metric WER_B.
 
 #### Local Deployment Instructions
 - First, prepare your dataset and a corresponding JSON configuration file. Several dataset loading templates are available in the *data_loading* folder for direct use or customization. You can also implement your own data loading method if necessary. An example JSON configuration is shown below:
