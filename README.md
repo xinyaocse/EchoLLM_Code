@@ -1,32 +1,34 @@
 # EchoLLM: LLM-Augmented Acoustic Eavesdropping Attack on Bone Conduction Headphones with mmWave Radar
 
+This repository contains the implementation of EchoLLM, including vibration signal processing, contextual speech recognition with large language models, and associated datasets for evaluation.
+
 - The *Datasets* folder includes representative subsets of all datasets used in the experiments.
-- The *Vibration_Signal* directory contains the implementation of 8kHz vibration signal extraction and signal enhancement using the IWR1443+DCA1000EVM mmWave radar platform.
-- The *LeASR* directory provides context-aware inference modules for audio content, leveraging four different large language models (LLMs).
+- The *Vibration_Signal* directory contains the implementation of 8kHz vibration signal extraction and enhancement using the IWR1443+DCA1000EVM mmWave radar platform.
+- The *LeASR* directory provides context-aware inference modules for audio content, leveraging four large language models (LLMs).
   
 ---
 
 ## Datasets
 
-The Datasets folder contains representative subsets of all datasets used in this study, as the original datasets are too large to be fully released. These subsets are randomly selected and curated to ensure coverage of key experimental scenarios. The folder is organized into the following subdirectories:
+The *Datasets* folder includes curated subsets of the full datasets used in our experiments, as the complete datasets are too large to be fully released. These subsets are randomly sampled to preserve the diversity of experimental conditions. Subdirectories include:
 
-- *CNN_TrainTest*: Training and testing data for the CNN-based classification model.
+- *CNN_TrainTest*: Training and testing sets for the CNN-based voice activity detector.
 - *LeASR_RealWorld*: Real-world data collected for the LeASR module.
-- *Controlled_Experiments*: Data used in controlled environment experiments.
+- *Controlled_Experiments*: Datasets used in controlled environment experiments.
 - *Ablation_Study*: Datasets used in ablation studies.
-- *Attack_Robustness*: Samples for evaluating robustness under varying attack conditions.
+- *Attack_Robustness*: Samples to evaluate robustness under varying attack conditions.
 - *User_Diversity*: Data collected from users with diverse demographic and behavioral profiles.
-- *Multilingual*: Audio data in multiple languages to test multilingual inference robustness.
-- *EchoLLM_Comparison*: Evaluation data for comparing EchoLLM with other acoustic eavesdropping methods.
-- *Headphone_Comparison*: Datasets for comparing bone conduction headphones with other types.
-- *Numerical_Inference*: Audio clips designed for inferring numerical data such as phone numbers or passcodes.
-- *Sensitive_Info*: Samples used for inferring sensitive personal or contextual information.
+- *Multilingual*: Audio data in multiple languages for multilingual inference robustness.
+- *EchoLLM_Comparison*: Evaluation data for comparing EchoLLM against baseline acoustic eavesdropping attacks.
+- *Headphone_Comparison*: Datasets for comparing bone conduction headphones with other headphone types.
+- *Numerical_Inference*: Audio segments designed for inferring numerical data such as phone numbers or passcodes.
+- *Sensitive_Info*: Audio segments used for inferring sensitive personal or contextual information.
 
 ---
 
 ## Vibration_Signal: Vibration Signal Extraction & Vibration Signal Enhancement
 
-The millimeter-wave radar system (IWR1443+DCA1000EVM) is configured and connected according to Texas Instruments' official guidelines. The provided code is designed to run in an environment equipped with mmWave-Studio 2.1.1 and MATLAB Runtime Engine v8.5.1. This documentation details the extraction and enhancement of vibration signals via mmWave radar to ensure accurate data acquisition and signal analysis through coordinated hardware and software tools.
+This module implements signal extraction and enhancement based on mmWave radar sensing. The system uses the IWR1443+DCA1000EVM platform, configured per TI guidelines. It runs in an environment with mmWave Studio 2.1.1 and MATLAB Runtime Engine v8.5.1.
 
 ### Initialization
 
@@ -43,38 +45,38 @@ The *Verification_script* folder offers methods to verify correct radar configur
 
 ### Measurement
 
-The *Measurement_script* folder contains five scripts, with *adc_dataCaptureTest_audio.lua* serving as the main radar configuration script. The remaining four scripts have the following functionalities:
+The *Measurement_script* folder contains three scripts:
 
-- *adc_dataCapture_model.mlx*: Synchronizes mmWave data acquisition with batch audio playback via bone conduction headphones.
+- *adc_dataCaptureTest_audio.lua*: Main radar configuration script.
+- *adc_dataCapture_model.mlx*: Synchronizes mmWave data acquisition with batch audio playback.
 - *final_data_process.mlx*: Provides a complete signal-processing pipeline, including:
-    - Target range bin identification. (Section 4.2.1: Victim vs. Other Objects).
-    - Optimal range bin selection based on signal-to-noise ratio (SNR) (Section 4.2.2: Victim vs. Headphone).
+    - Target range bin identification (Section 4.2.1: Victim vs. Other Objects).
+    - SNR-based optimal range bin selection (Section 4.2.2: Victim vs. Headphone).
     - Phase variation signal extraction (Section 4.2.3: Headphone Phase Estimation).
-    - Noise suppression and signal clarity enhancement using a circle-fitting algorithm (Section 4.3.1: Background Reflection Reduction).
-    - Removal of background noise and head motion artifacts (Section 4.3.2: Motion Calibration).
-    - Exporting the processed signal as *.wav* files.
+    - Circle-fitting for noise suppression and clarity enhancement (Section 4.3.1: Background Reflection Reduction).
+    - Motion calibration to remove artifacts (Section 4.3.2: Motion Calibration).
+    - Exporting the final signal as *.wav* files.
 
-Note: When processing audio recordings of unknown length (i.e., recordings outside training or testing scenarios), configure a high radar frame rate and apply the CNN-based voice activity detector described below to accurately identify actual voice segments.
-
+Note: For unknown-length recordings, use a high radar frame rate and apply the CNN-based voice activity detector (EchoVAD) to identify speech segments.
 
 ### CNN-based Voice Activity Detector (EchoVAD)
 
-- *CNN_wav.py*: Implements the training pipeline for the proposed convolutional neural network (CNN)-based voice activity detector (EchoVAD). The model is trained on 10,000 manually labeled spectrogram images to distinguish between speech and non-speech segments, enabling precise detection of audio presence in bone conduction signals.
-- *Speech_time_marker.py*: Applies the trained EchoVAD model to a given *.wav* file, segmenting it with a 50 *ms* window and a 10 *ms* sliding step to identify the estimated start and end times of speech segments. This process corresponds to the Headphone Phase Estimation step described in Section 4.2.3.
+- *CNN_wav.py*: Trains a CNN-based voice activity detector (EchoVAD) using 10,000 labeled spectrograms to classify speech vs. non-speech.
+- *Speech_time_marker.py*: Applies the trained EchoVAD to segment *.wav* files, using 50 *ms* windows and 10 *ms* strides. Outputs estimated speech start and end times (used in Section 4.2.3).
 
 ---
 ## LeASR
 
 ### Demo
 
-If you simply want to try LeASR, a lightweight automatic speech recognition (ASR) demo is provided in the *Demo* folder. To run the demo, you need only an audio file and a fine-tuned model. For convenience, contextual audio segments can be concatenated into a single input to streamline the recognition process.
+A lightweight ASR demo is available in the *Demo* folder. To run it, prepare an audio file and a fine-tuned model. Contextual audio segments can be concatenated to improve inference continuity.
 
 ### LeASR Directory Structure
 
-The *LeASR* directory is organized into four main folders, each responsible for a key component of the system:
+The *LeASR* directory is organized into four main folders:
 - *Model_loading*: Contains scripts for building, training, and evaluating the core speech recognition models.
-   - *model_create.py*: Generates and saves pre-trained models (e.g., HuBART, HuBART-L, Whisper, SpeechT5) at user-defined locations.
-   - Training and evaluation scripts:
+   - *model_create.py*: Builds and saves pre-trained models (e.g., HuBART, HuBART-L, Whisper, SpeechT5).
+   - Training & evaluation scripts:
       - *train_HuBART.py & eval_HuBART.py*: Training and evaluation of the HuBART model.
       - *train_HuBART_L.py & eval_HuBART_L.py*: Training and evaluation of the HuBART-L model.
       - *train_Whiper.py & eval_Whiper.py*: Training and evaluation of the Whiper model. Since Whisper is a multilingual model, language-specific decoder prompts must be configured. For example:
@@ -87,15 +89,15 @@ The *LeASR* directory is organized into four main folders, each responsible for 
       - *train_SpeechT5.py & eval_SpeechT5.py*: Training and evaluation of the SpeechT5 model.
 - *LLM_models*: Provides four large language models (LLMs).
 - *Data_loading*: Contains scripts managing data loading for LeASR by referencing external dataset configurations from the separate Datasets directory.
-    - Language-specific loaders:
+    - Training datasets loaders:
         - *libri_pre_16k_noised_Synthetic.py*: Loads synthetic English datasets.
         - *libri_pre_16k_noised_Real.py*: Loads real-world English datasets.
         - *libri_pre_16k_noised_CN.py*: Loads Chinese datasets.
         - *libri_pre_16k_noised_FR.py*: Loads French datasets.
         - *libri_pre_16k_noised_JP.py*: Loads Japanese datasets.
-    - Experiment-specific loader:
+    - Testing datasets loader:
+        - *exp_config.py*: Centrally manages data loading configurations across various experimental scenarios, including controlled experiments, robustness tests, ablation studies, multilingual evaluations, and sensitive information inference.
         - *libri_pre_16k_noised_eval_Exp_data.py*: Loads data for experimental evaluation, referencing configuration details in *exp_config.py*.
-    - *exp_config.py*: Centrally manages data loading configurations across various experimental scenarios, including controlled experiments, robustness tests, ablation studies, multilingual evaluations, and sensitive information inference.
 - *Metrics*: Provides scripts for evaluating LeASR system performance.
     - *wer.py*: Computes the Word Error Rate (WER) metric during training.
     - *Cal_exp_wer.py*: Computes the specialized WER_B metric for detailed evaluation during experimental analyses.
