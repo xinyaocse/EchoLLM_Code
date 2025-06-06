@@ -79,15 +79,13 @@ The LeASR directory is organized into four distinct folders:
       - Include various scripts tailored to different model architectures, data formats, and experimental setups.
       - Users should select and configure these scripts according to their specific experimental requirements.
 2. *LLM_models*: This folder provides implementations and configurations for leveraging four large language models (LLMs) to achieve context-aware inference:
-3. *Data_loading*: Contains scripts that manage data loading and preprocessing logic for LeASR.
-   - These scripts reference external dataset configurations located in the separate *Datasets* directory, without directly storing actual datasets.
-   - Includes data loading templates:
-       - *libri_pre_16k_noised_Synthetic.py*: Synthetic English datasets.
-       - *libri_pre_16k_noised_Real.py*: Real-world English datasets.
-       - *libri_pre_16k_noised_CN.py*: Chinese datasets.
-       - *libri_pre_16k_noised_FR.py*: French datasets.
-       - *libri_pre_16k_noised_JP.py*: Japanese datasets.
-       - *libri_pre_16k_noised_eval_Exp_data.py*: Experimental datasets configured via exp_config.py.
+3. *Data_loading*: Contains scripts managing data loading for LeASR by referencing external dataset configurations from the separate Datasets directory.
+    - *libri_pre_16k_noised_Synthetic.py*: Synthetic English datasets.
+    - *libri_pre_16k_noised_Real.py*: Real-world English datasets.
+    - *libri_pre_16k_noised_CN.py*: Chinese datasets.
+    - *libri_pre_16k_noised_FR.py*: French datasets.
+    - *libri_pre_16k_noised_JP.py*: Japanese datasets.
+    - *libri_pre_16k_noised_eval_Exp_data.py*: Experimental datasets configured via exp_config.py.
     - *exp_config.py*: Centrally manages data loading configurations across various experimental scenarios, including controlled experiments, robustness tests, ablation studies, multilingual evaluations, and sensitive information inference.
 5. *Metrics*: Provides scripts for evaluating LeASR system performance. Specifically, *wer.py* is used during training, while *Cal_exp_wer.py* is used to compute the evaluation-phase metric WER_B.
    
