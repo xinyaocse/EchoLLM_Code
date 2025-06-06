@@ -12,7 +12,7 @@ import torchaudio
 from dataset.dataset_config import no_bof_dataset, ASRDataset, DatasetAdapter, flag_dataset, noised_b_dataset, no_bof_dataset_fast,
 
 dataset = DatasetAdapter()
-dataset.set_datasets(flag_dataset)
+dataset.set_datasets(ASRDataset)
 
 META_DATA_TRAIN_PATH = dataset.dataset.train_path
 META_DATA_TEST_PATH = dataset.dataset.val_path
