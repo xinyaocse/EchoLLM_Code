@@ -2,6 +2,25 @@
 
 - The code for 8kHz vibration signal extraction, audio delay estimation and signal enhancement based on IWR1443+DCA1000EVM platform is available in the *Vibration_Signal* directory.
 - The *LeASR* directory includes the implementation for context-aware inference of audio content leveraging four different large language models (LLMs).
+- The Datasets folder contains subsets of all datasets.
+
+---
+
+## Datasets
+
+The Datasets folder contains subsets of all datasets, ​​as​​ the original datasets are too large. These subsets consist of randomly selected and combined samples from:
+
+- The training and testing sets for training the CNN-based Classification Model
+- The LeASR real-world dataset
+- Controlled Experiments datasets
+- Ablation Study datasets
+- Attack Robustness datasets
+- User Diversity Study datasets
+- Multilingual Robustness datasets
+- EchoLLM vs. Other Eavesdropping Attacks datasets
+- Bone Conduction vs. Other Headphones datasets
+- Inferring Numerical Data datasets
+- Inferring Sensitive Information datasets
 
 ---
 
