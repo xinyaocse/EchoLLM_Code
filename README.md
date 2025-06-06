@@ -12,9 +12,11 @@ This repository contains the implementation of EchoLLM, including vibration sign
 
 The *Datasets* folder includes curated subsets of the full datasets used in our experiments, as the complete datasets are too large to be fully released. These subsets are randomly sampled to preserve the diversity of experimental conditions. The folder is organized into two subdirectories:
 
-- TrainSet: Contains training data for the CNN-based voice activity detector and .
-  - *CNN_TrainTest*: Training and testing sets for the CNN-based voice activity detector.
+- TrainSet: Contains training datasets for both the CNN-based voice activity detector and the LeASR module.
+  - *CNN_Train*: Training data for the CNN-based voice activity detector (EchoVAD).
+  - *LeASR_Train*: Training data for the LeASR module.
 - TestSet: Contains evaluation datasets used in the various experimental settings described in the paper. These include:
+  - *CNN_Test*: Testing sets for the CNN-based voice activity detector.
   - *LeASR_RealWorld*: Real-world data collected for the LeASR module.
   - *Controlled_Experiments*: Datasets used in controlled environment experiments.
   - *Ablation_Study*: Datasets used in ablation studies.
