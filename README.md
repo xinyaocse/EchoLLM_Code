@@ -75,8 +75,16 @@ The LeASR directory is organized into four distinct folders:
 - *Model_loading*:
    - *model_create.py*: Generates and saves pre-trained models (e.g., HuBART, HuBART-L, Whisper, SpeechT5) at user-defined locations.
    - Training and evaluation scripts:
-      - Include various scripts tailored to different model architectures, data formats, and experimental setups.
-      - Users should select and configure these scripts according to their specific experimental requirements.
+      - *train_HuBART.py & eval_HuBART.py*: Training and evaluation of the HuBART model.
+      - *train_HuBART_L.py & eval_HuBART_L.py*: Training and evaluation of the HuBART-L model.
+      - *train_Whiper.py & eval_Whiper.py*: Training and evaluation of the Whiper model. Because it is a multilingual model, it requires language customization:
+      ```python
+          forced_decoder_ids = processor.get_decoder_prompt_ids(
+              language="English",
+              task="transcribe"
+          )
+      ```
+      - *train_SpeechT5.py & eval_SpeechT5.py*: Training and evaluation of the SpeechT5 model.
 - *LLM_models*: Provides four large language models (LLMs).
 - *Data_loading*: Contains scripts managing data loading for LeASR by referencing external dataset configurations from the separate Datasets directory.
     - *libri_pre_16k_noised_Synthetic.py*: Synthetic English datasets.
